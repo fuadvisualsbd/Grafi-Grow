@@ -8,35 +8,41 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollProgress.style.width = (window.scrollY / h * 100) + '%';
   });
 
-  // ==================== PARTICLE BACKGROUND ====================
+  // ==================== LOGO PARTICLE BACKGROUND ====================
   const canvas = document.getElementById('particles-canvas');
   const ctx = canvas.getContext('2d');
   let particles = [], mouse = { x: null, y: null };
+
+  // Load logo as image for particles
+  const logoImg = new Image();
+  logoImg.src = 'logo.svg';
+  let logoReady = false;
+  logoImg.onload = () => { logoReady = true; };
 
   function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
   resizeCanvas();
   window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
 
   class Particle {
-    constructor() {
-      this.reset();
-    }
+    constructor() { this.reset(); }
     reset() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 2.5 + 0.5;
-      this.speedX = (Math.random() - 0.5) * 0.5;
-      this.speedY = (Math.random() - 0.5) * 0.5;
-      this.color = Math.random() > 0.5 ? '193,39,45' : '46,49,146';
-      this.alpha = Math.random() * 0.5 + 0.15;
+      this.size = Math.random() * 16 + 8; // logo size 8-24px
+      this.speedX = (Math.random() - 0.5) * 0.4;
+      this.speedY = (Math.random() - 0.5) * 0.4;
+      this.alpha = Math.random() * 0.25 + 0.05;
       this.pulse = Math.random() * Math.PI * 2;
+      this.rotation = Math.random() * Math.PI * 2;
+      this.rotSpeed = (Math.random() - 0.5) * 0.008;
     }
     update() {
       this.pulse += 0.02;
+      this.rotation += this.rotSpeed;
       this.x += this.speedX;
       this.y += this.speedY;
-      if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-      if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      if (this.x < -20 || this.x > canvas.width + 20) this.speedX *= -1;
+      if (this.y < -20 || this.y > canvas.height + 20) this.speedY *= -1;
       if (mouse.x !== null) {
         const dx = this.x - mouse.x, dy = this.y - mouse.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -48,17 +54,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     draw() {
-      const a = this.alpha + Math.sin(this.pulse) * 0.1;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${this.color},${a})`;
-      ctx.fill();
+      if (!logoReady) return;
+      const a = this.alpha + Math.sin(this.pulse) * 0.08;
+      ctx.save();
+      ctx.globalAlpha = a;
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+      ctx.drawImage(logoImg, -this.size / 2, -this.size / 2, this.size, this.size);
+      ctx.restore();
     }
   }
 
   function initParticles() {
     particles = [];
-    const count = Math.min(100, Math.floor((canvas.width * canvas.height) / 12000));
+    const count = Math.min(60, Math.floor((canvas.width * canvas.height) / 20000));
     for (let i = 0; i < count; i++) particles.push(new Particle());
   }
   initParticles();
@@ -68,10 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 140) {
+        if (dist < 160) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(255,255,255,${0.05 * (1 - dist / 140)})`;
-          ctx.lineWidth = 0.6;
+          ctx.strokeStyle = `rgba(255,255,255,${0.04 * (1 - dist / 160)})`;
+          ctx.lineWidth = 0.5;
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
           ctx.stroke();
