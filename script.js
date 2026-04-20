@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     reset() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 16 + 8; // logo size 8-24px
+      this.size = Math.random() * 22 + 14; // logo size 14-36px
       this.speedX = (Math.random() - 0.5) * 0.4;
       this.speedY = (Math.random() - 0.5) * 0.4;
       this.alpha = Math.random() * 0.25 + 0.05;
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function initParticles() {
     particles = [];
-    const count = Math.min(60, Math.floor((canvas.width * canvas.height) / 20000));
+    const count = Math.min(120, Math.floor((canvas.width * canvas.height) / 10000));
     for (let i = 0; i < count; i++) particles.push(new Particle());
   }
   initParticles();
