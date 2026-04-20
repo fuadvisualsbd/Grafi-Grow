@@ -76,31 +76,23 @@ a { text-decoration: none; color: inherit; }
   padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 600;
   background: var(--bg-glass); border: 1px solid var(--border-glass);
   color: var(--text-secondary); transition: var(--transition); position: relative;
-  margin-left: 8px;
+  margin-left: 8px; overflow: hidden;
 }
 .nav-blog-link:hover { color: var(--text-primary); background: rgba(255,255,255,0.1); transform: translateY(-1px); }
 .nav-blog-link .blog-icon { font-size: 0.9rem; }
 .nav-blog-link .blog-text {
-  background: linear-gradient(90deg, var(--text-primary), var(--accent-red), var(--accent-blue), var(--text-primary));
-  background-size: 300% 100%;
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  animation: blogTextShimmer 3s ease-in-out infinite;
+  display: inline-block; overflow: hidden; white-space: nowrap;
+  border-right: 2px solid var(--accent-red);
+  color: var(--text-primary); -webkit-text-fill-color: var(--text-primary);
+  animation: typing 3s steps(8) infinite, blogBlink 0.6s step-end infinite;
 }
-@keyframes blogTextShimmer {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes typing {
+  0%, 10% { width: 0; }
+  40%, 70% { width: 5.2em; }
+  90%, 100% { width: 0; }
 }
-.blog-new-badge {
-  font-size: 0.55rem; font-weight: 800; letter-spacing: 1px;
-  padding: 2px 6px; border-radius: 50px;
-  background: var(--gradient-brand); color: #fff;
-  -webkit-text-fill-color: #fff;
-  animation: badgePulse 2s ease-in-out infinite;
-}
-@keyframes badgePulse {
-  0%,100% { box-shadow: 0 0 6px var(--accent-red-glow); }
-  50% { box-shadow: 0 0 16px var(--accent-red-glow), 0 0 24px var(--accent-blue-glow); }
+@keyframes blogBlink {
+  50% { border-color: transparent; }
 }
 .nav-links { display: flex; gap: 8px; list-style: none; }
 .nav-links a {
@@ -144,13 +136,13 @@ a { text-decoration: none; color: inherit; }
   position: relative; z-index: 2; text-align: center; max-width: 880px;
 }
 .hero-brand-row {
-  display: inline-flex; align-items: center; gap: 16px;
-  margin-bottom: 24px;
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-bottom: 12px;
 }
 .hero-logo {
-  width: 64px; height: 64px;
+  width: 44px; height: 44px;
   animation: float 6s ease-in-out infinite;
-  filter: drop-shadow(0 6px 24px var(--accent-red-glow));
+  filter: drop-shadow(0 4px 16px var(--accent-red-glow));
 }
 @keyframes float {
   0%,100% { transform: translateY(0); }
@@ -158,9 +150,9 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 6px 20px; border-radius: 50px; font-size: 0.8rem;
+  padding: 6px 20px; border-radius: 50px; font-size: 0.75rem;
   background: var(--bg-glass); border: 1px solid var(--border-glass);
-  color: var(--text-secondary); margin-bottom: 24px; font-weight: 500;
+  color: var(--text-secondary); margin-bottom: 0; font-weight: 500;
   letter-spacing: 2px; text-transform: uppercase;
 }
 .hero-badge .dot {
@@ -171,8 +163,8 @@ a { text-decoration: none; color: inherit; }
   0%,100% { opacity: 1; } 50% { opacity: 0.3; }
 }
 .hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900;
-  margin-bottom: 20px; letter-spacing: -1px;
+  font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900;
+  margin-bottom: 16px; letter-spacing: -1px;
 }
 .hero h1 .gradient-text {
   background: var(--gradient-brand-h);
