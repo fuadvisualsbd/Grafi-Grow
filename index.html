@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrafiGrow — Designs Engineered For Growth</title>
+  <meta name="description" content="GrafiGrow combines high-end design with data-driven strategy. Microstock management, high-CTR design, visual branding, tools, courses & more.">
+  <meta name="keywords" content="GrafiGrow, microstock, design, Adobe Stock, Shutterstock, branding, courses, tools">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Particle Background -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="logo.svg" alt="GrafiGrow Logo">
+      <span>GrafiGrow</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#software">Software</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-glow red"></div>
+  <div class="hero-glow blue"></div>
+  <div class="hero-content">
+    <img src="logo.svg" alt="GrafiGrow" class="hero-logo">
+    <div class="hero-badge"><span class="dot"></span> Designs Engineered For Growth</div>
+    <h1>We Build Designs<br>That <span class="gradient-text">Actually Perform</span></h1>
+    <p class="subtitle">Most designs just look good. Ours are engineered to perform. Whether it's dominating microstock platforms or boosting your brand's CTR, we combine high-end design with data-driven strategy.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">Explore Services <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#about" class="btn-secondary">Learn More <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num" data-count="3000">0</div><div class="label">Creators Served</div></div>
+      <div class="hero-stat"><div class="num" data-count="50">0</div><div class="label">Tools Built</div></div>
+      <div class="hero-stat"><div class="num" data-count="100">0</div><div class="label">Courses & Guides</div></div>
+      <div class="hero-stat"><div class="num" data-count="99">0</div><div class="label">% Satisfaction</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===== ABOUT ===== -->
+<section class="section" id="about" style="position:relative">
+  <div class="section-glow-orb" style="background:var(--accent-red);top:10%;left:-10%"></div>
+  <div class="section-header-center">
+    <div class="section-label reveal reveal-scale">🏢 About Us</div>
+    <h2 class="section-title split-text reveal">The Microstock <span class="gradient-text">Specialists</span></h2>
+    <p class="section-desc reveal">We don't just upload and hope for the best. We've turned microstock into a science. From Adobe Stock to Shutterstock, we know exactly what buyers are looking for.</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal reveal-left">
+      <p><strong>Secret Niche Research:</strong> We target high-demand, low-competition categories that the average contributor misses.</p>
+      <p><strong>Proprietary Tools:</strong> We use custom, secret tech to automate SEO and metadata, ensuring our assets rank at the top.</p>
+      <p><strong>High-Volume Downloads:</strong> Our strategy is built on one goal: Maximizing your portfolio's revenue.</p>
+      <p>We believe in <strong>Total Efficiency</strong>. By blending advanced AI-driven workflows with human design expertise, we move faster and rank higher. We don't just make art—we make assets that sell.</p>
+    </div>
+    <div class="about-features">
+      <div class="about-feature reveal reveal-right reveal-delay-1">
+        <div class="icon">📊</div>
+        <div><h4>Microstock Management</h4><p>Build, optimize, and scale stock portfolios that generate consistent downloads.</p></div>
+      </div>
+      <div class="about-feature reveal reveal-right reveal-delay-2">
+        <div class="icon">🎯</div>
+        <div><h4>High-CTR Design</h4><p>YouTube thumbnails and social media graphics designed to stop the scroll.</p></div>
+      </div>
+      <div class="about-feature reveal reveal-right reveal-delay-3">
+        <div class="icon">🚀</div>
+        <div><h4>Visual Branding</h4><p>Bold, high-impact design that gives your business a professional edge.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===== TOOLS ===== -->
+<section class="section" id="tools" style="position:relative">
+  <div class="section-glow-orb" style="background:var(--accent-blue);top:20%;right:-10%"></div>
+  <div class="section-label reveal reveal-scale">🛠️ Our Tools</div>
+  <h2 class="section-title split-text reveal">Powerful <span class="gradient-text">Free Tools</span></h2>
+  <p class="section-desc reveal">Professional-grade tools built by designers, for designers. All free to use.</p>
+  <div class="cards-grid">
+    <!-- Tool 1 -->
+    <div class="card reveal reveal-flip reveal-delay-1">
+      <div class="card-icon">📱</div>
+      <h3>QR Code Generator Pro</h3>
+      <p>Generate custom, branded QR codes with logo embedding, color customization, and instant download.</p>
+      <a href="https://qr-code-gg.vercel.app/" target="_blank" class="card-link">Launch Tool <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <!-- Tool 2 -->
+    <div class="card reveal reveal-flip reveal-delay-2">
+      <div class="card-icon">🏷️</div>
+      <h3>Metadata Pro</h3>
+      <p>AI-powered metadata generator for Adobe Stock & Shutterstock. Bulk process up to 1000 files with smart keywords.</p>
+      <a href="https://grafi-grow-metadata-pro.vercel.app/" target="_blank" class="card-link">Launch Tool <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <!-- Tool 3 -->
+    <div class="card reveal reveal-flip reveal-delay-3">
+      <div class="card-icon">🎨</div>
+      <h3>Color Palette Generator</h3>
+      <p>Create beautiful, harmonious color palettes for your design projects with AI-assisted suggestions.</p>
+      <a href="#" class="card-link">Coming Soon <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <!-- Tool 4 -->
+    <div class="card reveal reveal-flip reveal-delay-4">
+      <div class="card-icon">✂️</div>
+      <h3>Background Remover</h3>
+      <p>Remove backgrounds from images instantly with AI precision. Perfect for product photography and stock images.</p>
+      <a href="#" class="card-link">Coming Soon <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <!-- Tool 5 -->
+    <div class="card reveal reveal-flip reveal-delay-5">
+      <div class="card-icon">📐</div>
+      <h3>Vector Border Generator</h3>
+      <p>Generate professional vector borders and frames for stock assets. Multiple patterns and batch export.</p>
+      <a href="#" class="card-link">Coming Soon <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===== SOFTWARE ===== -->
+<section class="section" id="software" style="position:relative">
+  <div class="section-glow-orb" style="background:var(--accent-red);bottom:10%;left:-8%"></div>
+  <div class="section-label reveal reveal-scale">💻 Software</div>
+  <h2 class="section-title split-text reveal">Professional <span class="gradient-text">Software Suite</span></h2>
+  <p class="section-desc reveal">Desktop applications and scripts designed for high-volume creative workflows.</p>
+  <div class="cards-grid">
+    <div class="card reveal reveal-rotate reveal-delay-1">
+      <div class="card-icon">⚡</div>
+      <h3>Batch Converter Pro</h3>
+      <p>Adobe Illustrator batch processing script. Convert, export, and manage thousands of files with advanced automation.</p>
+      <a href="#" class="card-link">Download <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="card reveal reveal-rotate reveal-delay-2">
+      <div class="card-icon">💧</div>
+      <h3>Watermark Remover Pro</h3>
+      <p>AI-powered watermark removal tool for images and short videos. Client-side processing for maximum privacy.</p>
+      <a href="#" class="card-link">Download <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="card reveal reveal-rotate reveal-delay-3">
+      <div class="card-icon">🌀</div>
+      <h3>MeshGrad Pro</h3>
+      <p>Professional mesh gradient generator with deterministic seeds, batch processing, and high-vibrancy palettes.</p>
+      <a href="#" class="card-link">Download <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="card reveal reveal-rotate reveal-delay-4">
+      <div class="card-icon">🔄</div>
+      <h3>SVG Animation Studio</h3>
+      <p>Convert SVG animations to high-quality video formats. Perfect for social media and stock footage.</p>
+      <a href="#" class="card-link">Download <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===== COURSES ===== -->
+<section class="section" id="courses" style="position:relative">
+  <div class="section-glow-orb" style="background:var(--accent-blue);top:5%;left:50%;transform:translateX(-50%)"></div>
+  <div class="section-header-center">
+    <div class="section-label reveal reveal-scale">🎓 Courses</div>
+    <h2 class="section-title split-text reveal">Master the <span class="gradient-text">Microstock Game</span></h2>
+    <p class="section-desc reveal">Comprehensive courses crafted from real-world experience. Learn the strategies that generate thousands of downloads.</p>
+  </div>
+  <div class="courses-grid">
+    <!-- Course 1 -->
+    <div class="course-card reveal reveal-scale reveal-delay-1">
+      <div class="course-thumb">🎬</div>
+      <div class="course-body">
+        <span class="course-tag">Bestseller</span>
+        <h3>Microstock Mastery: Zero to $5,000/Month</h3>
+        <p>The complete blueprint to building a profitable microstock portfolio. Learn niche research, keyword optimization, and scaling strategies that top contributors use.</p>
+        <a href="#" class="course-link">Enroll Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+    <!-- Course 2 -->
+    <div class="course-card reveal reveal-scale reveal-delay-2">
+      <div class="course-thumb">🖼️</div>
+      <div class="course-body">
+        <span class="course-tag">New</span>
+        <h3>Vector Design for Stock: Pro Techniques</h3>
+        <p>Master Adobe Illustrator workflows optimized for stock. Create vectors that rank high, look professional, and generate consistent sales.</p>
+        <a href="#" class="course-link">Enroll Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+    <!-- Course 3 -->
+    <div class="course-card reveal reveal-scale reveal-delay-3">
+      <div class="course-thumb">🔍</div>
+      <div class="course-body">
+        <span class="course-tag">Advanced</span>
+        <h3>SEO & Metadata Secrets for Stock</h3>
+        <p>Deep dive into metadata optimization. Learn how to write titles, descriptions, and keywords that put your assets in front of buyers.</p>
+        <a href="#" class="course-link">Enroll Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+    <!-- Course 4 -->
+    <div class="course-card reveal reveal-scale reveal-delay-4">
+      <div class="course-thumb">🎯</div>
+      <div class="course-body">
+        <span class="course-tag">Popular</span>
+        <h3>High-CTR Thumbnail Design Bootcamp</h3>
+        <p>Design YouTube thumbnails that get clicks. Learn color psychology, typography tricks, and composition techniques that boost CTR by 300%.</p>
+        <a href="#" class="course-link">Enroll Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+    <!-- Course 5 -->
+    <div class="course-card reveal reveal-scale reveal-delay-5">
+      <div class="course-thumb">🤖</div>
+      <div class="course-body">
+        <span class="course-tag">Pro</span>
+        <h3>AI-Powered Design Automation</h3>
+        <p>Leverage AI tools to 10x your creative output. Automate repetitive tasks, batch process assets, and build efficient production pipelines.</p>
+        <a href="#" class="course-link">Enroll Now <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===== SERVICES ===== -->
+<section class="section" id="services" style="position:relative">
+  <div class="section-glow-orb" style="background:var(--accent-red);top:30%;right:-5%"></div>
+  <div class="section-header-center">
+    <div class="section-label reveal reveal-scale">⚙️ Services</div>
+    <h2 class="section-title split-text reveal">What We <span class="gradient-text">Offer</span></h2>
+    <p class="section-desc reveal">End-to-end creative services tailored for growth. Click on any service to learn more.</p>
+  </div>
+  <div class="services-grid" id="servicesGrid">
+    <!-- Services injected by JS -->
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ===== CONTACT ===== -->
+<section class="section" id="contact" style="position:relative">
+  <div class="section-glow-orb" style="background:var(--accent-blue);bottom:20%;left:-5%"></div>
+  <div class="section-header-center">
+    <div class="section-label reveal reveal-scale">📬 Get In Touch</div>
+    <h2 class="section-title split-text reveal">Ready to <span class="gradient-text">Start Growing?</span></h2>
+    <p class="section-desc reveal">Reach out for course purchases, project inquiries, or partnership opportunities.</p>
+  </div>
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <div class="contact-item reveal reveal-left reveal-delay-1">
+        <div class="c-icon">✉️</div>
+        <div>
+          <h4>Email</h4>
+          <p><a href="mailto:grafigrowofficial@gmail.com">grafigrowofficial@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-left reveal-delay-2">
+        <div class="c-icon">💬</div>
+        <div>
+          <h4>WhatsApp</h4>
+          <p><a href="https://wa.me/8801952767958" target="_blank">+880 1952 767 958</a></p>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-left reveal-delay-3">
+        <div class="c-icon">🌐</div>
+        <div>
+          <h4>Follow Us</h4>
+          <p>@grafigrowofficial</p>
+        </div>
+      </div>
+    </div>
+    <div class="contact-cta-box reveal reveal-right">
+      <h3>Stop Scrolling.<br><span class="gradient-text">Start Growing.</span></h3>
+      <p>Whether you need microstock management, custom design, or want to learn our strategies — we're just one message away.</p>
+      <div class="contact-btns">
+        <a href="mailto:grafigrowofficial@gmail.com" class="btn-primary">Send Email <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="https://wa.me/8801952767958" target="_blank" class="btn-secondary">WhatsApp Us 💬</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo.svg" alt="GrafiGrow">
+      <span>GrafiGrow</span>
+    </div>
+    <p>© 2026 GrafiGrow. Designs Engineered For Growth. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Service Detail Modal -->
+<div class="modal-overlay" id="serviceModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">✕</button>
+    <h3 id="modalTitle"></h3>
+    <p id="modalBody"></p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
