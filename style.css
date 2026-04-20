@@ -69,6 +69,13 @@ a { text-decoration: none; color: inherit; }
 .nav-logo span {
   font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.25rem;
   background: var(--gradient-brand-h); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  display: block; line-height: 1.2;
+}
+.nav-logo-text { display: flex; flex-direction: column; }
+.nav-slogan {
+  font-size: 0.55rem; font-weight: 500; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--text-muted);
+  line-height: 1; margin-top: 1px;
 }
 /* Blog Link */
 .nav-blog-link {
