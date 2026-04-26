@@ -3,10 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ==================== SCROLL PROGRESS BAR ====================
   const scrollProgress = document.getElementById('scrollProgress');
+  let tickingProgress = false;
   window.addEventListener('scroll', () => {
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    scrollProgress.style.width = (window.scrollY / h * 100) + '%';
-  });
+    if (!tickingProgress) {
+      window.requestAnimationFrame(() => {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        scrollProgress.style.width = (window.scrollY / h * 100) + '%';
+        tickingProgress = false;
+      });
+      tickingProgress = true;
+    }
+  }, { passive: true });
 
   // ==================== LOGO PARTICLE BACKGROUND ====================
   const canvas = document.getElementById('particles-canvas');
@@ -89,10 +96,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  let canvasActive = true;
+  const canvasObs = new IntersectionObserver(entries => {
+    canvasActive = entries[0].isIntersecting;
+  });
+  const heroElement = document.getElementById('hero');
+  if (heroElement) canvasObs.observe(heroElement);
+
   (function animLoop() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => { p.update(); p.draw(); });
-    connectParticles();
+    if (canvasActive && !document.hidden) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      connectParticles();
+    }
     requestAnimationFrame(animLoop);
   })();
 
@@ -101,7 +117,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ==================== NAVBAR ====================
   const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+  let tickingNav = false;
+  window.addEventListener('scroll', () => {
+    if (!tickingNav) {
+      window.requestAnimationFrame(() => {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+        tickingNav = false;
+      });
+      tickingNav = true;
+    }
+  }, { passive: true });
 
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
@@ -179,16 +204,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==================== HERO PARALLAX ====================
   const heroContent = document.querySelector('.hero-content');
   const heroGlows = document.querySelectorAll('.hero-glow');
+  let tickingHero = false;
   window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    if (y < window.innerHeight) {
-      heroContent.style.transform = `translateY(${y * 0.3}px)`;
-      heroContent.style.opacity = 1 - (y / window.innerHeight) * 0.8;
-      heroGlows.forEach((g, i) => {
-        g.style.transform = `translateY(${y * (i === 0 ? 0.15 : -0.1)}px)`;
+    if (!tickingHero) {
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y < window.innerHeight) {
+          heroContent.style.transform = `translateY(${y * 0.3}px)`;
+          heroContent.style.opacity = 1 - (y / window.innerHeight) * 0.8;
+          heroGlows.forEach((g, i) => {
+            g.style.transform = `translateY(${y * (i === 0 ? 0.15 : -0.1)}px)`;
+          });
+        }
+        tickingHero = false;
       });
+      tickingHero = true;
     }
-  });
+  }, { passive: true });
 
   // ==================== MAGNETIC CURSOR ON BUTTONS ====================
   document.querySelectorAll('.btn-primary, .btn-secondary, .nav-cta').forEach(btn => {
@@ -269,13 +301,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==================== ACTIVE NAV LINK ====================
   const sections = document.querySelectorAll('section[id]');
   const navLinksAll = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+  let tickingActiveNav = false;
   window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
-    navLinksAll.forEach(l => {
-      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
-    });
-  });
+    if (!tickingActiveNav) {
+      window.requestAnimationFrame(() => {
+        let current = '';
+        sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+        navLinksAll.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+        });
+        tickingActiveNav = false;
+      });
+      tickingActiveNav = true;
+    }
+  }, { passive: true });
 
   // ==================== SECTION DIVIDER ANIMATION ====================
   document.querySelectorAll('.section-divider').forEach(div => {
