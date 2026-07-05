@@ -249,6 +249,8 @@ a { text-decoration: none; color: inherit; }
 .reveal-delay-8 { transition-delay: 0.64s; }
 .reveal-delay-9 { transition-delay: 0.72s; }
 .reveal-delay-10 { transition-delay: 0.80s; }
+.reveal-delay-11 { transition-delay: 0.88s; }
+.reveal-delay-12 { transition-delay: 0.96s; }
 
 /* ===== TEXT SPLIT ANIMATION ===== */
 .split-text .char {
@@ -341,6 +343,9 @@ a { text-decoration: none; color: inherit; }
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 0.85rem; font-weight: 600; color: var(--accent-red);
   transition: var(--transition);
+}
+.card-link::before {
+  content: ''; position: absolute; inset: 0; z-index: 1;
 }
 .card-link:hover { gap: 12px; }
 .card-link svg { transition: var(--transition); }
