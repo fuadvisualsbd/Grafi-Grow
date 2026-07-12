@@ -593,3 +593,10 @@ a { text-decoration: none; color: inherit; }
   .cards-grid, .courses-grid, .services-grid { grid-template-columns: 1fr; }
   .hero-btns { flex-direction: column; align-items: center; }
 }
+
+#courses, #services {
+  filter: blur(15px);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.5;
+}
