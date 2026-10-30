@@ -346,266 +346,148 @@
       </div>
     </div>
 
-    <!-- ===== MOTION GRAPHICS EXPLAINER VIDEO SECTION (VOICEOVER + MOTION GFX) ===== -->
+    <!-- ===== HOW WE WORK: REAL WORKFLOW DEMO + VOICE NARRATION + PROOF GALLERY ===== -->
     <section class="section" id="explainer-video" style="padding-top: 60px;">
       <div class="section-glow-orb" style="background:var(--accent-red);top:10%;right:-10%"></div>
       <div class="section-header-center">
-        <div class="badge-tag green">🎬 Agency Motion Explainer</div>
-        <h2 class="section-title split-text reveal">Who We Are &amp; <span class="gradient-text">What We Do</span></h2>
+        <div class="badge-tag green">🎬 See How We Work</div>
+        <h2 class="section-title split-text reveal">Real Humans. Real Precision. <span class="gradient-text">Real Results.</span></h2>
         <p class="section-desc reveal">
-          Watch our high-fidelity motion graphics explainer with studio narration. Learn how our computer vision pipelines, Meta SAM 2 integrations, and 4-tier human QA guarantee 99.8% pixel accuracy.
+          We don't rely on automation alone. Our trained annotators manually draw every polygon, verify every mask, and track every frame. Watch real CVAT annotation workflows below — this is exactly how your data gets labeled.
         </p>
       </div>
 
-      <div class="motion-player-container reveal reveal-scale">
-        <!-- Player Top Bar / HUD -->
-        <div class="player-hud-bar">
-          <div class="player-hud-status">
+      <!-- ===== PART 1: REAL WORKFLOW VIDEO EMBED ===== -->
+      <div class="demo-video-section reveal reveal-scale">
+        <div class="demo-video-header">
+          <div class="demo-video-badge">
             <span class="live-pulse"></span>
-            <span>GRAFIGROW AI VISION LAB • SYSTEM OVERVIEW</span>
-          </div>
-          <div class="player-hud-tags">
-            <span class="hud-chip">48kHz STUDIO VOICE</span>
-            <span class="hud-chip">60FPS MOTION GFX</span>
+            <span>LIVE ANNOTATION WORKFLOW • CVAT POLYGON SEGMENTATION</span>
           </div>
         </div>
 
-        <!-- Video Canvas / Visual Stage -->
-        <div class="motion-stage" id="motionStage">
-          <!-- Ambient Soundwave Visualizer -->
-          <div class="stage-soundwave" id="stageSoundwave">
-            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          </div>
-
-          <!-- Interactive Simulated CV Studio Canvas -->
-          <div class="sim-studio-canvas" id="simStudioCanvas">
-            <!-- Interactive Mode Pill -->
-            <div class="sim-interactive-badge" id="simModeBadge">
-              <span class="dot"></span>
-              <span id="simModeText">AUTOPILOT DEMO • CLICK ANY OBJECT TO INTERACT</span>
-            </div>
-
-            <!-- Top Studio Toolbar HUD -->
-            <div class="sim-topbar">
-              <div class="sim-topbar-left">
-                <div class="sim-live-chip">SAM 2.1 ONLINE</div>
-                <div class="sim-tools-ribbon">
-                  <button class="sim-tool-btn" id="simToolWand"><span>🪄</span> Smart Wand</button>
-                  <button class="sim-tool-btn active" id="simToolPoly"><span>📐</span> Polygon Lasso</button>
-                  <button class="sim-tool-btn" id="simToolTrack"><span>🎬</span> VOS Tracker</button>
-                  <button class="sim-tool-btn" id="simToolQA"><span>🔍</span> QA Inspector</button>
-                </div>
-              </div>
-              <div class="sim-topbar-right">
-                <span class="sim-stat-chip">Precision: <strong id="simStatIou" style="color:#00f5ff;">99.92% IoU</strong></span>
-                <span class="sim-stat-chip">Sub-pixel: <strong style="color:#4ade80;">0.05px</strong></span>
-                <span class="sim-stat-chip">FPS: <strong style="color:#ffd166;">60</strong></span>
-              </div>
-            </div>
-
-            <!-- Central Viewport -->
-            <div class="sim-viewport" id="simViewport">
-              <!-- Perspective Road Floor & Horizon -->
-              <div class="sim-grid-floor"></div>
-              <div class="sim-horizon-glow"></div>
-
-              <!-- Motion Trajectory Stream for VOS -->
-              <div class="sim-trajectory" id="simTrajectory"></div>
-
-              <!-- Interactive Object 1: Autonomous Sedan -->
-              <div class="sim-obj sim-car-1" id="simCar1" data-obj="sedan">
-                <!-- Target Reticle -->
-                <div class="sim-reticle"></div>
-                <!-- Dynamic Tooltip -->
-                <div class="sim-obj-tooltip" id="simCar1Tooltip">
-                  <span>🎯 Sedan #04 • Class: Vehicle [SAM-2 Active]</span>
-                </div>
-                <!-- Car SVG Artwork -->
-                <svg class="sim-car-svg" viewBox="0 0 260 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Wheels -->
-                  <circle cx="55" cy="95" r="20" class="sim-car-wheels"/>
-                  <circle cx="55" cy="95" r="11" fill="#151926"/>
-                  <circle cx="205" cy="95" r="20" class="sim-car-wheels"/>
-                  <circle cx="205" cy="95" r="11" fill="#151926"/>
-                  <!-- Main Body Contour -->
-                  <path d="M20 90 L35 65 L70 55 L115 32 L175 32 L215 52 L245 68 L250 88 L230 92 L180 92 L80 92 Z" class="sim-car-body"/>
-                  <!-- Cabin & Windows -->
-                  <path d="M118 36 L170 36 L202 54 L120 54 Z" class="sim-car-windows"/>
-                  <path d="M82 54 L114 36 L114 54 Z" class="sim-car-windows"/>
-                  <!-- Headlight / Taillight Glow -->
-                  <polygon points="245,70 255,75 248,82" class="sim-headlights"/>
-                  <polygon points="22,72 18,72 18,80 22,80" fill="#ff3366"/>
-                </svg>
-                <!-- Segmented Polygon Overlay Mask -->
-                <div class="sim-polygon-mask" id="simCar1Mask">
-                  <svg class="sim-car-svg" viewBox="0 0 260 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <polygon points="18,92 32,63 68,53 113,30 177,30 217,50 248,66 252,90 228,94 182,94 78,94" class="sim-mask-poly"/>
-                  </svg>
-                  <!-- 8 Vertex Nodes -->
-                  <span class="sim-vertex" style="left:18px; top:92px;"></span>
-                  <span class="sim-vertex" style="left:32px; top:63px;"></span>
-                  <span class="sim-vertex" style="left:68px; top:53px;"></span>
-                  <span class="sim-vertex" style="left:113px; top:30px;"></span>
-                  <span class="sim-vertex" style="left:177px; top:30px;"></span>
-                  <span class="sim-vertex" style="left:217px; top:50px;"></span>
-                  <span class="sim-vertex" style="left:248px; top:66px;"></span>
-                  <span class="sim-vertex" style="left:252px; top:90px;"></span>
-                </div>
-              </div>
-
-              <!-- Interactive Object 2: Van in Adjacent Lane -->
-              <div class="sim-obj sim-car-2" id="simCar2" data-obj="van">
-                <div class="sim-reticle"></div>
-                <div class="sim-obj-tooltip"><span>🚚 Delivery Van #12 • Occlusion: 12%</span></div>
-                <svg class="sim-car-svg" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="45" cy="80" r="15" class="sim-car-wheels"/>
-                  <circle cx="155" cy="80" r="15" class="sim-car-wheels"/>
-                  <path d="M20 78 L25 40 L60 30 L180 30 L185 78 Z" class="sim-car-body" style="stroke:rgba(168,85,247,0.5);"/>
-                  <path d="M30 42 L58 35 L58 55 L30 55 Z" class="sim-car-windows"/>
-                </svg>
-              </div>
-
-              <!-- Interactive Object 3: Pedestrian on Sidewalk -->
-              <div class="sim-obj sim-pedestrian" id="simPedestrian" data-obj="pedestrian">
-                <div class="sim-reticle"></div>
-                <div class="sim-obj-tooltip"><span>🚶 Pedestrian #03 • Keypoints: 17</span></div>
-                <svg viewBox="0 0 50 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
-                  <rect x="4" y="4" width="42" height="82" rx="4" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4 2" fill="rgba(249,115,22,0.15)"/>
-                  <circle cx="25" cy="18" r="8" fill="#f97316"/>
-                  <line x1="25" y1="26" x2="25" y2="55" stroke="#f97316" stroke-width="2.5"/>
-                  <line x1="12" y1="35" x2="38" y2="35" stroke="#f97316" stroke-width="2"/>
-                  <line x1="25" y1="55" x2="15" y2="82" stroke="#f97316" stroke-width="2.5"/>
-                  <line x1="25" y1="55" x2="35" y2="82" stroke="#f97316" stroke-width="2.5"/>
-                </svg>
-              </div>
-
-              <!-- Scene 4 Overlay: Verified Daily Production Audit Ledger -->
-              <div class="sim-ledger-overlay" id="simLedgerOverlay">
-                <div class="sim-ledger-card">
-                  <div class="sim-ledger-title">
-                    <span>📋 Verified Daily Production Audit Logs</span>
-                    <span class="sim-ledger-badge">100% QA AUDIT PASSED</span>
-                  </div>
-                  <div class="sim-ledger-row hovered" id="simLedgerRow1">
-                    <div class="sim-ledger-row-text">
-                      <strong>Batch #1042 • 4,280 Semantic Frames (Medical AI)</strong>
-                      <small>99.92% IoU Accuracy • Dual-Tier Engineer Consensus</small>
-                    </div>
-                    <span class="sim-ledger-badge" style="background:rgba(0,229,255,0.2); color:#00f5ff; border-color:#00f5ff;">VERIFIED ✓</span>
-                  </div>
-                  <div class="sim-ledger-row" id="simLedgerRow2">
-                    <div class="sim-ledger-row-text">
-                      <strong>Batch #1043 • 250min Drone VOS Temporal Tracking</strong>
-                      <small>Zero-drift keyframe propagation • 60 FPS verified</small>
-                    </div>
-                    <span class="sim-ledger-badge">LOCKED ✓</span>
-                  </div>
-                  <div class="sim-ledger-row" id="simLedgerRow3">
-                    <div class="sim-ledger-row-text">
-                      <strong>Batch #1044 • Daily Production Screen Recording</strong>
-                      <small>4K CVAT Workflow capture • Full transparency audit</small>
-                    </div>
-                    <span class="sim-ledger-badge" style="background:rgba(193,39,45,0.2); color:#ff6b6b; border-color:#ff6b6b;">RECORDED 🎥</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Scene 5 Overlay: Direct WhatsApp Conversion Pilot -->
-              <div class="sim-whatsapp-overlay" id="simWhatsappOverlay">
-                <div class="sim-whatsapp-box">
-                  <div class="sim-whatsapp-avatar">
-                    <svg width="30" height="30" fill="#fff" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.072-2.123-.521-1.624-.674-2.656-2.316-2.737-2.424-.08-.108-.663-.881-.663-1.682 0-.8.421-1.193.57-1.353.149-.161.326-.201.435-.201.109 0 .217.001.312.006.1.005.234-.038.366.279.135.327.461 1.124.502 1.206.04.081.067.176.014.283-.054.108-.081.175-.162.27-.081.095-.17.212-.243.285-.081.082-.166.171-.071.334.095.162.421.696.904 1.127.621.554 1.144.726 1.307.807.162.081.257.068.351-.04.095-.109.407-.474.516-.636.108-.162.217-.136.365-.081.149.054.949.447 1.112.529.163.081.272.122.312.189.041.068.041.393-.103.798z"/></svg>
-                  </div>
-                  <h4 style="font-size:1.25rem; font-weight:700; color:#fff; margin-bottom:6px;">Fuad Visuals • Lead CV Engineer</h4>
-                  <p style="font-size:0.86rem; color:#4ade80; margin-bottom:12px;">● Online Now • Ready to Launch Your Custom Pilot</p>
-                  <p style="font-size:0.84rem; color:var(--text-secondary); max-width:380px; margin:0 auto 16px;">Claim a <strong>free 50-image calibration batch</strong> within 24 hours with full IoU metric reports and custom annotation rules.</p>
-                  <a href="https://wa.me/8801952767958?text=Hi%20Fuad%2C%20I%20watched%20the%20interactive%20video%20walkthrough%20and%20want%20to%20start%20our%20free%2050-image%20pilot%20batch." target="_blank" rel="noopener noreferrer" class="sim-whatsapp-btn" id="simWhatsappBtn">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.072-2.123-.521-1.624-.674-2.656-2.316-2.737-2.424-.08-.108-.663-.881-.663-1.682 0-.8.421-1.193.57-1.353.149-.161.326-.201.435-.201.109 0 .217.001.312.006.1.005.234-.038.366.279.135.327.461 1.124.502 1.206.04.081.067.176.014.283-.054.108-.081.175-.162.27-.081.095-.17.212-.243.285-.081.082-.166.171-.071.334.095.162.421.696.904 1.127.621.554 1.144.726 1.307.807.162.081.257.068.351-.04.095-.109.407-.474.516-.636.108-.162.217-.136.365-.081.149.054.949.447 1.112.529.163.081.272.122.312.189.041.068.041.393-.103.798z"/></svg>
-                    <span>Start Free Pilot on WhatsApp</span>
-                  </a>
-                </div>
-              </div>
-
-              <!-- THE VIRTUAL ANIMATED POINTER CURSOR -->
-              <div class="sim-virtual-cursor" id="simVirtualCursor">
-                <!-- SVG Cursor Arrow -->
-                <svg class="sim-cursor-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 3 L20 11 L12 13 L8 21 Z" fill="url(#cursorGradient)" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round"/>
-                  <defs>
-                    <linearGradient id="cursorGradient" x1="4" y1="3" x2="20" y2="21" gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#00f5ff"/>
-                      <stop offset="1" stop-color="#c1272d"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <!-- Click Shockwave Ring -->
-                <div class="sim-cursor-click-ring" id="simCursorClickRing"></div>
-                <!-- Dynamic Action Label Pill -->
-                <div class="sim-cursor-pill" id="simCursorPill">Hovering Vehicle...</div>
-              </div>
-            </div>
-
-            <!-- Bottom Simulation Timeline Bar -->
-            <div class="sim-timeline-bar">
-              <div class="sim-frame-counter" id="simFrameCounter">FRAME: 01 / 48</div>
-              <div class="sim-track" id="simTrack">
-                <div class="sim-track-progress" id="simTrackProgress"></div>
-                <div class="sim-playhead" id="simPlayhead"></div>
-              </div>
-              <span class="sim-stat-chip">TIMECODE: <strong id="simTimecode" style="color:#00f5ff;">00:01.24</strong></span>
-            </div>
-          </div>
-
-          <!-- Big Play / Pause Overlay Button (Center of Stage) -->
-          <button class="stage-play-trigger" id="stagePlayTrigger" aria-label="Play or Pause Explainer Video">
-            <div class="play-orb" id="playOrb">
-              <svg id="playIconSvg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </div>
-            <span class="play-pulse-ring"></span>
-          </button>
-        </div>
-<!-- Synchronized Kinetic Captions Bar -->
-        <div class="kinetic-caption-bar" id="captionBar">
-          <span class="caption-speaker">NARRATOR:</span>
-          <span class="caption-text" id="captionText">Click play to watch our 35-second motion graphics agency explainer with voiceover.</span>
+        <!-- Tab Navigation for Videos -->
+        <div class="demo-video-tabs" id="demoVideoTabs">
+          <button class="demo-tab active" data-video="YL0l2MYUFC0" data-title="Polygon Annotation">📐 Polygon Annotation</button>
+          <button class="demo-tab" data-video="FLIBzzqu7hQ" data-title="Video Dataset Annotation">🎬 Video Annotation</button>
+          <button class="demo-tab" data-video="WPAdT8XXRaM" data-title="Custom Dataset Labeling">📦 Custom Dataset Labeling</button>
         </div>
 
-        <!-- Controls Footer Bar -->
-        <div class="player-controls-bar">
-          <div class="controls-left">
-            <button class="ctrl-btn" id="ctrlPlayBtn" title="Play / Pause">
-              <svg id="ctrlPlaySvg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <!-- YouTube Video Player -->
+        <div class="demo-video-player">
+          <iframe id="demoVideoFrame" width="100%" height="100%"
+            src="https://www.youtube.com/embed/YL0l2MYUFC0?rel=0&modestbranding=1&color=white"
+            title="Real CVAT Polygon Annotation Workflow"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <div class="demo-video-caption">
+          <p>☝️ <strong>This is our daily workflow.</strong> Real human annotators drawing precise polygon masks vertex-by-vertex using CVAT. Every edge refined by hand. Every pixel verified.</p>
+        </div>
+      </div>
+
+      <!-- ===== PART 2: VOICE NARRATION PLAYER (Keep Kokoro Voice) ===== -->
+      <div class="voice-narration-section reveal">
+        <div class="voice-narration-card">
+          <div class="voice-card-left">
+            <div class="voice-avatar">
+              <img src="/logo.svg" alt="GrafiGrow" style="width:36px; height:36px;">
+            </div>
+            <div class="voice-info">
+              <strong>GrafiGrow Agency Overview</strong>
+              <span>Listen to our 47-second walkthrough</span>
+            </div>
+          </div>
+          <div class="voice-card-player">
+            <button class="voice-play-btn" id="voicePlayBtn" aria-label="Play voice narration">
+              <svg id="voicePlayIcon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             </button>
-            <button class="ctrl-btn" id="ctrlRestartBtn" title="Restart">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
-            </button>
-            <span class="time-display" id="timeDisplay">00:00 / 00:33</span>
-          </div>
-
-          <!-- Progress Scrubber Bar -->
-          <div class="timeline-bar" id="timelineBar">
-            <div class="timeline-progress" id="timelineProgress"></div>
-          </div>
-
-          <div class="controls-right">
-            <button class="ctrl-btn" id="ctrlMuteBtn" title="Mute / Unmute">
-              <svg id="volumeSvg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-            </button>
-            <!-- Chapter jump pills -->
-            <div class="chapter-pills">
-              <button class="chap-pill active" data-start="0" data-time="0">1. Overview</button>
-              <button class="chap-pill" data-start="7.2" data-time="7.2">2. Segmentation</button>
-              <button class="chap-pill" data-start="20.1" data-time="20.1">3. VOS Tracking</button>
-              <button class="chap-pill" data-start="29.8" data-time="29.8">4. Daily Proofs</button>
-              <button class="chap-pill" data-start="39.3" data-time="39.3">5. WhatsApp Pilot</button>
+            <div class="voice-progress-wrap" id="voiceProgressWrap">
+              <div class="voice-progress-bar" id="voiceProgressBar"></div>
             </div>
+            <span class="voice-time" id="voiceTime">0:00 / 0:47</span>
           </div>
         </div>
-
-        <!-- Hidden Native Audio Source -->
         <audio id="explainerAudio" src="/proofs/explainer_voice.mp3" preload="metadata"></audio>
       </div>
+
+      <!-- ===== PART 3: REAL PROOF SCREENSHOT GALLERY ===== -->
+      <div class="proof-gallery-section reveal">
+        <div class="proof-gallery-header">
+          <h3 class="proof-gallery-title">📸 Our Actual CVAT Sessions — Client-Verified Proof</h3>
+          <p class="proof-gallery-desc">These are real screenshots from our production workspace. Not mockups, not templates — actual annotation sessions from live client projects.</p>
+        </div>
+
+        <div class="proof-gallery-grid" id="proofGalleryGrid">
+          <div class="proof-card" data-proof="1">
+            <div class="proof-card-img-wrap">
+              <img src="/proofs/Screenshot_1.png" alt="CVAT Annotation Session - Polygon Segmentation in Progress" loading="lazy">
+              <div class="proof-card-overlay">
+                <span class="proof-badge-verified">✓ VERIFIED</span>
+                <span class="proof-badge-zoom">🔍 Click to Expand</span>
+              </div>
+            </div>
+            <div class="proof-card-meta">
+              <strong>Polygon Segmentation Session</strong>
+              <small>CVAT Workspace • Manual Vertex Placement</small>
+            </div>
+          </div>
+
+          <div class="proof-card" data-proof="2">
+            <div class="proof-card-img-wrap">
+              <img src="/proofs/Screenshot_2.png" alt="Multi-Object Instance Labeling with Track IDs" loading="lazy">
+              <div class="proof-card-overlay">
+                <span class="proof-badge-verified">✓ VERIFIED</span>
+                <span class="proof-badge-zoom">🔍 Click to Expand</span>
+              </div>
+            </div>
+            <div class="proof-card-meta">
+              <strong>Multi-Object Instance Labeling</strong>
+              <small>Track ID Persistence • Frame-by-Frame</small>
+            </div>
+          </div>
+
+          <div class="proof-card" data-proof="3">
+            <div class="proof-card-img-wrap">
+              <img src="/proofs/Screenshot_3.png" alt="Dense Semantic Annotation with Class Hierarchy" loading="lazy">
+              <div class="proof-card-overlay">
+                <span class="proof-badge-verified">✓ VERIFIED</span>
+                <span class="proof-badge-zoom">🔍 Click to Expand</span>
+              </div>
+            </div>
+            <div class="proof-card-meta">
+              <strong>Dense Semantic Annotation</strong>
+              <small>Class Hierarchy • Sub-pixel Edge Refinement</small>
+            </div>
+          </div>
+
+          <div class="proof-card" data-proof="4">
+            <div class="proof-card-img-wrap">
+              <img src="/proofs/Screenshot_4.png" alt="QA Validation and Export Pipeline Review" loading="lazy">
+              <div class="proof-card-overlay">
+                <span class="proof-badge-verified">✓ VERIFIED</span>
+                <span class="proof-badge-zoom">🔍 Click to Expand</span>
+              </div>
+            </div>
+            <div class="proof-card-meta">
+              <strong>QA Validation & Export</strong>
+              <small>IoU Consensus Check • COCO JSON Export</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fullscreen Image Lightbox -->
+      <div class="proof-lightbox" id="proofLightbox">
+        <button class="lightbox-close" id="proofLightboxClose" aria-label="Close">&times;</button>
+        <img class="lightbox-img" id="proofLightboxImg" src="" alt="Full-size proof screenshot">
+      </div>
+
     </section>
 
     <div class="section-divider"></div>
