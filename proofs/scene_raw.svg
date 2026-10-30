@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a0c16"/>
+      <stop offset="60%" stop-color="#141828"/>
+      <stop offset="100%" stop-color="#1e243d"/>
+    </linearGradient>
+    <linearGradient id="roadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#181a24"/>
+      <stop offset="100%" stop-color="#0c0d12"/>
+    </linearGradient>
+    <linearGradient id="bldgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a1d2e"/>
+      <stop offset="100%" stop-color="#0f111c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect x="0" y="0" width="1200" height="340" fill="url(#skyGrad)"/>
+
+  <!-- City Skyline / Buildings Background -->
+  <rect x="40" y="80" width="160" height="260" fill="url(#bldgGrad)"/>
+  <rect x="220" y="120" width="130" height="220" fill="#131624"/>
+  <rect x="370" y="60" width="190" height="280" fill="url(#bldgGrad)"/>
+  <rect x="580" y="100" width="140" height="240" fill="#151929"/>
+  <rect x="740" y="50" width="180" height="290" fill="url(#bldgGrad)"/>
+  <rect x="940" y="110" width="220" height="230" fill="#121522"/>
+
+  <!-- Building Windows -->
+  <g fill="#f59e0b" opacity="0.3">
+    <rect x="60" y="100" width="12" height="18" rx="2"/>
+    <rect x="90" y="100" width="12" height="18" rx="2"/>
+    <rect x="120" y="100" width="12" height="18" rx="2"/>
+    <rect x="60" y="140" width="12" height="18" rx="2"/>
+    <rect x="90" y="140" width="12" height="18" rx="2"/>
+    <rect x="400" y="90" width="14" height="22" rx="2"/>
+    <rect x="440" y="90" width="14" height="22" rx="2"/>
+    <rect x="480" y="90" width="14" height="22" rx="2"/>
+    <rect x="770" y="80" width="14" height="20" rx="2"/>
+    <rect x="810" y="80" width="14" height="20" rx="2"/>
+  </g>
+
+  <!-- Sidewalk -->
+  <polygon points="0,340 1200,340 1200,380 0,380" fill="#2a2e42"/>
+  <line x1="0" y1="380" x2="1200" y2="380" stroke="#3b425f" stroke-width="3"/>
+
+  <!-- Roadway -->
+  <polygon points="0,380 1200,380 1200,600 0,600" fill="url(#roadGrad)"/>
+
+  <!-- Lane Markings -->
+  <line x1="100" y1="480" x2="300" y2="480" stroke="#fbbf24" stroke-width="4" stroke-dasharray="30 20" opacity="0.6"/>
+  <line x1="450" y1="480" x2="750" y2="480" stroke="#fbbf24" stroke-width="4" stroke-dasharray="30 20" opacity="0.6"/>
+  <line x1="900" y1="480" x2="1150" y2="480" stroke="#fbbf24" stroke-width="4" stroke-dasharray="30 20" opacity="0.6"/>
+
+  <!-- Street Lamp -->
+  <path d="M180,340 L180,180 Q180,140 230,140 L260,140" fill="none" stroke="#64748b" stroke-width="5"/>
+  <polygon points="255,140 270,140 265,155 260,155" fill="#f8fafc"/>
+  <ellipse cx="262" cy="165" rx="30" ry="12" fill="#38bdf8" opacity="0.15"/>
+
+  <!-- Vehicle 1 (Autonomous SUV in center-right) -->
+  <g id="car1">
+    <!-- Wheels -->
+    <ellipse cx="680" cy="460" rx="28" ry="28" fill="#090a0f"/>
+    <ellipse cx="680" cy="460" rx="14" ry="14" fill="#64748b"/>
+    <ellipse cx="860" cy="460" rx="28" ry="28" fill="#090a0f"/>
+    <ellipse cx="860" cy="460" rx="14" ry="14" fill="#64748b"/>
+    <!-- Body -->
+    <path d="M630,440 L640,390 L710,340 L820,340 L890,390 L920,400 L920,450 L895,450 Q860,430 825,450 L715,450 Q680,430 645,450 Z" fill="#334155" stroke="#475569" stroke-width="2"/>
+    <!-- Windows -->
+    <polygon points="712,348 760,348 760,388 662,388" fill="#0284c7" opacity="0.5"/>
+    <polygon points="768,348 815,348 870,388 768,388" fill="#0284c7" opacity="0.5"/>
+    <!-- Headlight / Taillight -->
+    <rect x="630" y="405" width="10" height="15" rx="2" fill="#fbbf24"/>
+    <rect x="915" y="405" width="6" height="18" rx="2" fill="#ef4444"/>
+  </g>
+
+  <!-- Vehicle 2 (Sedan in left distance) -->
+  <g id="car2" opacity="0.85">
+    <ellipse cx="320" cy="415" rx="16" ry="16" fill="#090a0f"/>
+    <ellipse cx="400" cy="415" rx="16" ry="16" fill="#090a0f"/>
+    <path d="M290,405 L300,380 L345,355 L395,355 L425,380 L435,405 L415,405 Q400,395 385,405 L335,405 Q320,395 305,405 Z" fill="#475569"/>
+    <polygon points="345,360 390,360 415,380 310,380" fill="#38bdf8" opacity="0.4"/>
+  </g>
+
+  <!-- Pedestrian with bag crossing walkway -->
+  <g id="pedestrian">
+    <!-- Head -->
+    <circle cx="510" cy="305" r="10" fill="#fbcfe8"/>
+    <!-- Torso / Jacket -->
+    <path d="M500,320 L520,320 L522,365 L498,365 Z" fill="#0284c7"/>
+    <!-- Legs -->
+    <line x1="504" y1="365" x2="498" y2="415" stroke="#1e293b" stroke-width="6" stroke-linecap="round"/>
+    <line x1="516" y1="365" x2="524" y2="415" stroke="#1e293b" stroke-width="6" stroke-linecap="round"/>
+    <!-- Backpack -->
+    <rect x="492" y="325" width="8" height="24" rx="3" fill="#e11d48"/>
+  </g>
+
+  <!-- Traffic Sign Post -->
+  <g id="traffic-sign">
+    <rect x="1040" y="240" width="6" height="140" fill="#94a3b8"/>
+    <polygon points="1043,205 1070,250 1016,250" fill="#ef4444"/>
+    <polygon points="1043,215 1060,245 1026,245" fill="#ffffff"/>
+  </g>
+
+  <!-- Watermark / Timestamp -->
+  <text x="20" y="35" fill="#64748b" font-family="monospace" font-size="14" letter-spacing="1">RAW CAMERA STREAM • 1920x1080@60FPS • SENSOR_ID: #CAM_FRONT_01</text>
+</svg>

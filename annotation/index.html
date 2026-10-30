@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Image & Video Segmentation Services | Precision Data Annotation Agency — GrafiGrow</title>
+  <meta name="description"
+    content="Enterprise-grade Image & Video Segmentation services for Computer Vision AI. Pixel-perfect semantic, instance, and panoptic segmentation powered by CVAT, SAM 2, and human-in-the-loop engineering. Inspect daily proof-of-work logs and request a free pilot sample batch.">
+  <meta name="keywords"
+    content="image segmentation services, video segmentation, semantic segmentation, instance segmentation, panoptic segmentation, video object segmentation, VOS, SAM 2, CVAT, Labelme, Label Studio, Roboflow, polygon annotation, bounding box, LiDAR 3D point cloud, computer vision datasets, AI training data, COCO format, YOLO segmentation, medical image annotation, autonomous driving annotation, data labeling agency">
+  <link rel="canonical" href="https://grafigrow.vercel.app/annotation" />
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="AI Image & Video Segmentation Services — GrafiGrow">
+  <meta property="og:description"
+    content="High-precision semantic, instance, and video object tracking (VOS) for Computer Vision AI. 99.8% pixel accuracy SLA with live daily proof of work.">
+  <meta property="og:url" content="https://grafigrow.vercel.app/annotation">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://grafigrow.vercel.app/proofs/data_annotation_project.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Image & Video Segmentation Services — GrafiGrow">
+  <meta name="twitter:description"
+    content="High-precision semantic, instance, and video object tracking (VOS) for Computer Vision AI. 99.8% pixel accuracy SLA.">
+  <meta name="twitter:image" content="https://grafigrow.vercel.app/proofs/data_annotation_project.png">
+
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="8XX_V6yCA-6KQUBsNFtNIlviJoP2q1E629nxLA9E5Pc" />
+
+  <link rel="icon" type="image/svg+xml" href="/logo.svg">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/annotation.css">
+
+  <!-- Schema.org JSON-LD Structured Data for Enhanced Google Indexing -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://grafigrow.vercel.app/#organization",
+        "name": "GrafiGrow",
+        "url": "https://grafigrow.vercel.app/",
+        "logo": "https://grafigrow.vercel.app/logo.svg",
+        "email": "grafigrowofficial@gmail.com",
+        "telephone": "+8801952767958",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+8801952767958",
+          "contactType": "customer service",
+          "availableLanguage": ["English", "Bengali"]
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://grafigrow.vercel.app/annotation#service",
+        "name": "Computer Vision Image and Video Segmentation Services",
+        "provider": { "@id": "https://grafigrow.vercel.app/#organization" },
+        "serviceType": "Data Annotation and Computer Vision Labeling",
+        "description": "High-precision image and video segmentation services including semantic segmentation, instance polygon masking, panoptic scene parsing, and video object segmentation (VOS).",
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Segmentation & Annotation Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Semantic Segmentation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instance Segmentation & Polygon Masking" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Video Object Segmentation & Tracking (VOS)" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medical & Dental AI Radiography Masking" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Robotics & Industrial Defect Annotation" } }
+          ]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://grafigrow.vercel.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Data Annotation & Segmentation",
+            "item": "https://grafigrow.vercel.app/annotation"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What image and video segmentation services does GrafiGrow provide?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We provide end-to-end Computer Vision annotation services including Semantic Segmentation (per-pixel labeling), Instance Segmentation (individual object polygon boundaries), Panoptic Segmentation, Video Object Segmentation (temporal tracking and keyframe interpolation using SAM 2 and CVAT), 2D/3D Bounding Boxes, Keypoint Skeletal Tracking, and Sub-pixel Medical Imaging."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What dataset formats and annotation tools do you support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We deliver annotations in any required ML format: COCO JSON, YOLOv8/v11 segmentation TXT, Pascal VOC XML + PNG masks, CVAT XML 1.1, MOTS, TFRecord, GeoJSON, and DICOM formats. We work natively with CVAT, Labelme, Label Studio, Roboflow, and custom proprietary toolchains."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you guarantee 99.8% pixel boundary accuracy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We employ a strict 4-Tier Human-in-the-Loop Quality Assurance framework: automated model pre-labeling, manual sub-pixel edge refinement, programmatic syntax and polygon overlap linting, and blind senior QA audits with a mandatory 98.5%+ Intersection-over-Union (IoU) threshold."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I get a free pilot sample batch before committing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! We offer a free pilot calibration batch (up to 50 images or 5 video clips) with full QA audit reports within 24 hours. Contact our lead engineer directly on WhatsApp (+880 1952 767 958) to get started."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is client data protected and secured?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We operate under strict bilateral NDAs with air-gapped workstations, zero persistent cloud storage of proprietary datasets, role-based access control, and encrypted S3/GCS presigned transfers."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Particle Background -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/logo.svg" alt="GrafiGrow Logo">
+        <div class="nav-logo-text">
+          <span>GrafiGrow</span>
+          <small class="nav-slogan">Designs &amp; AI Data Engineered For Growth</small>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#interactive-demo">Live Demo</a></li>
+        <li><a href="#daily-proofs">Daily Proofs</a></li>
+        <li><a href="#client-checklist">What to Provide</a></li>
+        <li><a href="#qa-pipeline">QA Process</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://wa.me/8801952767958?text=Hi%20GrafiGrow%2C%20I%20am%20inquiring%20about%20your%20Image%20%26%20Video%20Segmentation%20Services." target="_blank" rel="noopener noreferrer" class="nav-cta">WhatsApp Us 💬</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content" class="annotation-page">
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" style="min-height: 90vh; padding-top: 140px;">
+      <div class="hero-glow red"></div>
+      <div class="hero-glow blue"></div>
+      <div class="hero-content" style="max-width: 980px;">
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-nav" style="justify-content: center;">
+          <a href="/">Home</a>
+          <span>/</span>
+          <span style="color: var(--text-primary); font-weight: 500;">Computer Vision Data Annotation &amp; Segmentation</span>
+        </div>
+
+        <!-- Live Status Pill -->
+        <div class="hero-live-status">
+          <span class="live-pulse"></span>
+          <span>Enterprise Agency • Daily Production Logs Verified</span>
+        </div>
+
+        <h1>High-Precision Image &amp; Video<br><span class="gradient-text">Segmentation Services</span></h1>
+        <p class="subtitle" style="max-width: 760px;">
+          Pixel-perfect semantic, instance, and video object tracking (VOS) for Computer Vision models. Powered by CVAT, SAM 2 foundation models, and rigorous human-in-the-loop engineering. Built for Autonomous Systems, Medical AI, Robotics, and Manufacturing QA.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="hero-btns">
+          <a href="https://wa.me/8801952767958?text=Hello%20GrafiGrow%2C%20I%20am%20reviewing%20your%20Segmentation%20%26%20Annotation%20proof%20of%20work.%20I%20would%20like%20to%20discuss%20a%20pilot%20project." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span>Chat on WhatsApp (+880 1952 767 958)</span>
+          </a>
+          <a href="#daily-proofs" class="btn-primary">
+            <span>Explore Daily Proofs</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <a href="#client-checklist" class="btn-secondary">
+            <span>What to Provide</span>
+          </a>
+        </div>
+
+        <!-- Agency Performance Metric Strip -->
+        <div class="metrics-strip">
+          <div class="metric-card">
+            <div class="metric-val">99.8%</div>
+            <div class="metric-title">Pixel Accuracy SLA</div>
+            <div class="metric-sub">Strict IoU benchmark guarantee</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">1.2M+</div>
+            <div class="metric-title">Instances Labeled</div>
+            <div class="metric-sub">Across 40+ CV architectures</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">50k+</div>
+            <div class="metric-title">Daily Throughput</div>
+            <div class="metric-sub">Dedicated human annotator pods</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">&lt; 24h</div>
+            <div class="metric-title">Pilot Turnaround</div>
+            <div class="metric-sub">Free 50-sample calibration batch</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-val">ISO/NDA</div>
+            <div class="metric-title">Zero Data Leakage</div>
+            <div class="metric-sub">Air-gapped secure workstations</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== CAPABILITIES SECTION ===== -->
+    <section class="section" id="capabilities">
+      <div class="section-glow-orb" style="background:var(--accent-red);top:10%;left:-10%"></div>
+      <div class="section-header-center">
+        <div class="badge-tag">🔬 Core Technologies</div>
+        <h2 class="section-title split-text reveal">Image &amp; Video <span class="gradient-text">Segmentation Capabilities</span></h2>
+        <p class="section-desc reveal">
+          From micro-scale industrial wafer defects to multi-object temporal video streams, our engineering team handles the most demanding computer vision labeling tasks.
+        </p>
+      </div>
+
+      <div class="capabilities-grid">
+
+        <!-- Card 1: Semantic Segmentation -->
+        <div class="cap-card reveal reveal-scale reveal-delay-1">
+          <div class="cap-icon">🗺️</div>
+          <h3>Semantic Segmentation</h3>
+          <p>Dense, pixel-level class assignment for continuous visual regions without gaps. Ideal for aerial mapping, agriculture crop canopy indexing, and autonomous driving drivable-area recognition.</p>
+          <ul class="cap-features">
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Pixel-level boundary adherence without border clipping</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Multi-class palette indexing (Cityscapes, ADE20K compatible)</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 8-bit &amp; 16-bit PNG mask exports with clean metadata</li>
+          </ul>
+          <div class="cap-tags">
+            <span class="tech-chip">Cityscapes</span>
+            <span class="tech-chip">ADE20K</span>
+            <span class="tech-chip">Pascal VOC</span>
+            <span class="tech-chip">Raster Masks</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Instance Segmentation -->
+        <div class="cap-card reveal reveal-scale reveal-delay-2">
+          <div class="cap-icon">📐</div>
+          <h3>Instance Segmentation</h3>
+          <p>Isolating and distinguishing individual overlapping objects with precise polygon vertices. Critical for robotics bin-picking, crowd pedestrian tracking, and biological cell segmentation.</p>
+          <ul class="cap-features">
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Sub-pixel polygon accuracy with Bezier &amp; multi-point fitting</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Individual instance ID tagging for overlapping items</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Verified COCO polygon JSON &amp; YOLOv8/v11 segmentation TXT</li>
+          </ul>
+          <div class="cap-tags">
+            <span class="tech-chip">COCO JSON</span>
+            <span class="tech-chip">YOLOv8-Seg</span>
+            <span class="tech-chip">Polygons</span>
+            <span class="tech-chip">Instance IDs</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Video Object Segmentation (VOS) -->
+        <div class="cap-card reveal reveal-scale reveal-delay-3">
+          <div class="cap-icon">🎬</div>
+          <h3>Video Object Segmentation (VOS)</h3>
+          <p>Frame-by-frame temporal mask propagation and object tracking across complex video sequences. Seamless handling of temporary occlusions, camera rotations, and scale shifts using SAM 2 and CVAT.</p>
+          <ul class="cap-features">
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Persistent Track IDs maintained through severe occlusions</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Keyframe interpolation with human micro-refinement</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> MOTS (Multi-Object Tracking &amp; Segmentation) format output</li>
+          </ul>
+          <div class="cap-tags">
+            <span class="tech-chip">SAM 2 Tracker</span>
+            <span class="tech-chip">CVAT Interpolation</span>
+            <span class="tech-chip">MOTS</span>
+            <span class="tech-chip">YouTube-VOS</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Panoptic Segmentation -->
+        <div class="cap-card reveal reveal-scale reveal-delay-4">
+          <div class="cap-icon">🧩</div>
+          <h3>Panoptic Scene Parsing</h3>
+          <p>The gold standard of unified scene understanding. Combines uncountable amorphous background classes (roads, sky, vegetation) with countable foreground instances (vehicles, humans, obstacles).</p>
+          <ul class="cap-features">
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Zero overlap overlap-free complete scene representation</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Strict consistency audits between "things" and "stuff"</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Ready for high-end autonomous simulators and robotics</li>
+          </ul>
+          <div class="cap-tags">
+            <span class="tech-chip">Panoptic COCO</span>
+            <span class="tech-chip">Scene Parsing</span>
+            <span class="tech-chip">Semantic + Instance</span>
+          </div>
+        </div>
+
+        <!-- Card 5: Medical & Microscopic Annotation -->
+        <div class="cap-card reveal reveal-scale reveal-delay-5">
+          <div class="cap-icon">🏥</div>
+          <h3>Medical &amp; Microscopic AI</h3>
+          <p>Micro-polygon delineation for high-stakes healthcare and micro-electronics datasets. Proven production experience in dental radiography, CT/MRI DICOM scans, and PCB micro-electrode solder defect analysis.</p>
+          <ul class="cap-features">
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Multi-windowing contrast enhancement for faint anatomical anomalies</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> High-resolution 4K surface pore and microscopic fissure tracking</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Strict HIPAA-aligned data processing and air-gapped environments</li>
+          </ul>
+          <div class="cap-tags">
+            <span class="tech-chip">DICOM Slices</span>
+            <span class="tech-chip">Dental X-Ray</span>
+            <span class="tech-chip">4K Surface Pores</span>
+            <span class="tech-chip">PCB Micro-Mapping</span>
+          </div>
+        </div>
+
+        <!-- Card 6: 3D Point Cloud & Sensor Fusion -->
+        <div class="cap-card reveal reveal-scale reveal-delay-6">
+          <div class="cap-icon">📡</div>
+          <h3>LiDAR 3D Cuboids &amp; Fusion</h3>
+          <p>Spatial 3D bounding cuboid labeling aligned with multi-camera camera vectors. Provides precise XYZ positioning, yaw/pitch/roll orientations, and semantic segmentation on raw point cloud files (LAS, PCD, BIN).</p>
+          <ul class="cap-features">
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 3D cuboid orientation with heading vectors</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Multi-camera to LiDAR projection verification</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Calibration support for KITTI, nuScenes, and custom rigs</li>
+          </ul>
+          <div class="cap-tags">
+            <span class="tech-chip">LiDAR 3D</span>
+            <span class="tech-chip">KITTI</span>
+            <span class="tech-chip">nuScenes</span>
+            <span class="tech-chip">PCD / BIN</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== INTERACTIVE DEMO SLIDER ===== -->
+    <section class="section" id="interactive-demo">
+      <div class="section-glow-orb" style="background:var(--accent-blue);top:20%;right:-10%"></div>
+      <div class="section-header-center">
+        <div class="badge-tag blue">⚡ Interactive Inspector</div>
+        <h2 class="section-title split-text reveal">Drag to Inspect <span class="gradient-text">Pixel Accuracy</span></h2>
+        <p class="section-desc reveal">
+          Test our segmentation precision live. Drag the interactive comparison divider to reveal color-coded multi-class polygon masks, bounding boxes, and sub-pixel vertex fitting on an autonomous scene.
+        </p>
+      </div>
+
+      <div class="slider-container">
+        <!-- Slider Header Metrics -->
+        <div class="slider-header">
+          <div class="slider-stats">
+            <div class="slider-stat-pill">
+              <span>Benchmark IoU:</span>
+              <strong>99.8%</strong>
+            </div>
+            <div class="slider-stat-pill">
+              <span>Vertex Smoothing:</span>
+              <strong>Sub-pixel Fit</strong>
+            </div>
+            <div class="slider-stat-pill">
+              <span>Classes Detected:</span>
+              <strong>6 Categories</strong>
+            </div>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            Drag white center handle left / right
+          </div>
+        </div>
+
+        <!-- The Comparison Box -->
+        <div class="comparison-box" id="comparisonBox">
+          <!-- Segmented Layer (Full underneath) -->
+          <div class="comparison-layer segmented">
+            <img src="/proofs/scene_segmented.svg" alt="Segmented Multiclass Mask" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+
+          <!-- Raw Layer (Clipped on top) -->
+          <div class="comparison-layer raw" id="rawLayer">
+            <div class="raw-inner" id="rawInner">
+              <img src="/proofs/scene_raw.svg" alt="Raw Input Image" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+          </div>
+
+          <!-- Handle -->
+          <div class="slider-handle" id="sliderHandle">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="8 4 4 12 8 20"/><polyline points="16 4 20 12 16 20"/></svg>
+          </div>
+
+          <!-- Labels -->
+          <div class="slider-label left">Raw Camera Stream</div>
+          <div class="slider-label right">GrafiGrow Segmented Overlay</div>
+        </div>
+
+        <!-- Class Legend -->
+        <div class="class-legend">
+          <div class="legend-item"><span class="color-swatch" style="background:#ef4444"></span> Car Instances</div>
+          <div class="legend-item"><span class="color-swatch" style="background:#10b981"></span> Pedestrians (with Joints)</div>
+          <div class="legend-item"><span class="color-swatch" style="background:#2563eb"></span> Drivable Surface</div>
+          <div class="legend-item"><span class="color-swatch" style="background:#a855f7"></span> Sidewalk</div>
+          <div class="legend-item"><span class="color-swatch" style="background:#6366f1"></span> Buildings</div>
+          <div class="legend-item"><span class="color-swatch" style="background:#eab308"></span> Traffic Signals</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== DAILY PROOFS & SCREEN RECORDINGS ===== -->
+    <section class="section" id="daily-proofs">
+      <div class="section-glow-orb" style="background:var(--accent-red);bottom:10%;left:-8%"></div>
+      <div class="section-header-center">
+        <div class="badge-tag green">🔴 Live Production Proofs</div>
+        <h2 class="section-title split-text reveal">Daily Production Logs &amp; <span class="gradient-text">Screen Recordings</span></h2>
+        <p class="section-desc reveal">
+          We believe in radical transparency. Inspect real screen recordings of our annotators at work, active CVAT and Labelme workspaces, and daily production deliverables. Click any item to play the video or inspect the high-resolution screenshot.
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="proofs-filter-bar">
+        <button class="filter-btn active" data-filter="all">All Daily Logs</button>
+        <button class="filter-btn" data-filter="video">🎥 Video Segmentation &amp; VOS</button>
+        <button class="filter-btn" data-filter="image">🖼️ Image &amp; Semantic Masking</button>
+        <button class="filter-btn" data-filter="medical">🏥 Medical AI</button>
+        <button class="filter-btn" data-filter="autonomous">🤖 Autonomous &amp; Robotics</button>
+      </div>
+
+      <!-- Dynamic Proofs Grid -->
+      <div class="proofs-grid" id="proofsGrid">
+        <!-- Injected via annotation.js -->
+      </div>
+
+      <!-- Client Daily Upload Notification Banner -->
+      <div class="daily-uploader-banner">
+        <div class="daily-banner-info">
+          <h4>🚀 Continuous Daily Pipeline Verification</h4>
+          <p>Our annotator pods log daily screen recordings and verified QA batches. Need to review a specific workflow or custom dataset tool before kicking off your pilot?</p>
+        </div>
+        <a href="https://wa.me/8801952767958?text=Hi%20GrafiGrow%2C%20I%20would%20like%20to%20request%20a%20live%20screen%20recording%20demo%20for%20our%20dataset." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero" style="padding: 12px 26px; font-size: 0.95rem;">
+          <span>Request Custom Live Demo</span>
+        </a>
+      </div>
+
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== CLIENT CHECKLIST: WHAT TO PROVIDE ===== -->
+    <section class="section" id="client-checklist">
+      <div class="section-glow-orb" style="background:var(--accent-blue);top:15%;right:-5%"></div>
+      <div class="section-header-center">
+        <div class="badge-tag">📋 Project Onboarding Guide</div>
+        <h2 class="section-title split-text reveal">What Things to Provide to <span class="gradient-text">Start Your Project</span></h2>
+        <p class="section-desc reveal">
+          To ensure zero onboarding friction and immediate alignment, here is the complete 5-point specification checklist our engineering team needs to launch your annotation pipeline.
+        </p>
+      </div>
+
+      <div class="checklist-grid">
+
+        <!-- Step 1 -->
+        <div class="checklist-card reveal reveal-scale reveal-delay-1">
+          <div class="checklist-step-num">01</div>
+          <div class="checklist-header">
+            <div class="checklist-icon">📦</div>
+            <div>
+              <h4>Raw Dataset Media</h4>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Format &amp; Ingestion</span>
+            </div>
+          </div>
+          <ul class="checklist-items">
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Images / Videos:</strong> JPEG, PNG, TIFF, MP4, AVI, or DICOM series.</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Resolution:</strong> Native resolution (e.g., 1080p, 4K, 8K) or downscaled specs.</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Delivery:</strong> AWS S3 Presigned URL, Google Cloud Storage, or Drive.</li>
+          </ul>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="checklist-card reveal reveal-scale reveal-delay-2">
+          <div class="checklist-step-num">02</div>
+          <div class="checklist-header">
+            <div class="checklist-icon">🏷️</div>
+            <div>
+              <h4>Class Ontology &amp; Taxonomy</h4>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Label Specifications</span>
+            </div>
+          </div>
+          <ul class="checklist-items">
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Class Hierarchy:</strong> List of distinct categories (e.g. Car, Pedestrian, Wheel).</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Attributes:</strong> Occlusion percentage, truncation, weather, state flags.</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>ID Persistence:</strong> Whether track IDs must be maintained across frames.</li>
+          </ul>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="checklist-card reveal reveal-scale reveal-delay-3">
+          <div class="checklist-step-num">03</div>
+          <div class="checklist-header">
+            <div class="checklist-icon">⚠️</div>
+            <div>
+              <h4>Edge-Case Rules &amp; Protocol</h4>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Ambiguity Resolution</span>
+            </div>
+          </div>
+          <ul class="checklist-items">
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Minimum Size:</strong> Pixel threshold (e.g. ignore objects &lt; 12x12px).</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Boundary Blur:</strong> Rules for motion blur, glare, and partial transparencies.</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Negative Samples:</strong> How to handle frames where no target objects appear.</li>
+          </ul>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="checklist-card reveal reveal-scale reveal-delay-4">
+          <div class="checklist-step-num">04</div>
+          <div class="checklist-header">
+            <div class="checklist-icon">💾</div>
+            <div>
+              <h4>Target Export Format</h4>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Model Integration</span>
+            </div>
+          </div>
+          <ul class="checklist-items">
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Format Choice:</strong> COCO JSON, YOLOv8/v11 segmentation TXT, Pascal VOC.</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Mask Types:</strong> Multi-color raster PNGs, binary instance masks, or SVG vectors.</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Tooling File:</strong> CVAT XML 1.1 or Label Studio JSON exports if preferred.</li>
+          </ul>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="checklist-card reveal reveal-scale reveal-delay-5">
+          <div class="checklist-step-num">05</div>
+          <div class="checklist-header">
+            <div class="checklist-icon">🎯</div>
+            <div>
+              <h4>Quality SLA &amp; Pilot Scope</h4>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Acceptance Threshold</span>
+            </div>
+          </div>
+          <ul class="checklist-items">
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Target IoU:</strong> e.g., 98.5% minimum Intersection-over-Union benchmark.</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Pilot Batch:</strong> 50 to 100 sample images or 5 video clips for calibration.</li>
+            <li><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <strong>Delivery Cadence:</strong> Rolling daily batches or weekly volume milestones.</li>
+          </ul>
+        </div>
+
+        <!-- Assistance Card -->
+        <div class="checklist-card reveal reveal-scale reveal-delay-6" style="background: linear-gradient(145deg, rgba(37,211,102,0.1), rgba(46,49,146,0.1)); border-color: rgba(37,211,102,0.3);">
+          <div class="checklist-header">
+            <div class="checklist-icon" style="background:#25d366; color:#fff;">💡</div>
+            <div>
+              <h4>Need Taxonomy Assistance?</h4>
+              <span style="font-size: 0.78rem; color: #4ade80;">Free Protocol Consultation</span>
+            </div>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">
+            Don't have a formal annotation guideline written yet? Send 5-10 raw sample files to our lead annotator on WhatsApp. We will draft your class taxonomy and edge-case protocol for free!
+          </p>
+          <a href="https://wa.me/8801952767958?text=Hi%20GrafiGrow%2C%20I%20have%20raw%20images%2Fvideos%20and%20need%20help%20structuring%20our%20annotation%20taxonomy%20guidelines." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero" style="padding: 10px 20px; font-size: 0.88rem; width: 100%; justify-content: center;">
+            <span>Consult on WhatsApp</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== 4-TIER QA PIPELINE ===== -->
+    <section class="section" id="qa-pipeline">
+      <div class="section-glow-orb" style="background:var(--accent-red);top:25%;left:-5%"></div>
+      <div class="section-header-center">
+        <div class="badge-tag green">🛡️ Quality Guarantee</div>
+        <h2 class="section-title split-text reveal">Our 4-Tier <span class="gradient-text">Quality Assurance Protocol</span></h2>
+        <p class="section-desc reveal">
+          How we achieve a consistent 99.8% pixel accuracy SLA. Every dataset passes through automated validation scripts and senior human review before client delivery.
+        </p>
+      </div>
+
+      <div class="qa-timeline">
+
+        <!-- Step 1 -->
+        <div class="qa-step reveal reveal-scale reveal-delay-1">
+          <span class="qa-step-badge">Tier 1: AI Acceleration</span>
+          <h4>Model Pre-Labeling</h4>
+          <p>Initial boundary proposals generated using Segment Anything (SAM 2) or custom YOLO pre-labelers to establish base polygon hulls rapidly without human fatigue.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="qa-step reveal reveal-scale reveal-delay-2">
+          <span class="qa-step-badge">Tier 2: Human Micro-Fitting</span>
+          <h4>Expert Polygon Crafting</h4>
+          <p>Certified domain annotators manually adjust vertex nodes, zoom in at 400% magnification, and refine difficult boundaries, occlusions, and sub-pixel details.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="qa-step reveal reveal-scale reveal-delay-3">
+          <span class="qa-step-badge">Tier 3: Programmatic Linting</span>
+          <h4>Automated Syntax Audits</h4>
+          <p>Custom Python validation scripts automatically check for self-intersecting polygons, invalid zero-area masks, boundary out-of-bounds, and class schema conformity.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="qa-step reveal reveal-scale reveal-delay-4">
+          <span class="qa-step-badge">Tier 4: Senior Blind QA</span>
+          <h4>Consensus &amp; IoU Audit</h4>
+          <p>Senior QA leads perform randomized dual-annotator consensus audits on 100% of pilot files and 20% of continuous production batches with a mandatory 98.5%+ IoU cutoff.</p>
+        </div>
+
+      </div>
+
+      <!-- Tools Showcase -->
+      <div style="margin-top: 60px; text-align: center;">
+        <h3 style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 20px;">Supported Industry Tools &amp; Model Frameworks</h3>
+        <div class="tools-showcase">
+          <div class="tool-badge"><span>⚡ CVAT (Computer Vision Annotation Tool)</span></div>
+          <div class="tool-badge"><span>🎯 Meta SAM 2 (Segment Anything)</span></div>
+          <div class="tool-badge"><span>🏷️ Labelme &amp; Anaconda</span></div>
+          <div class="tool-badge"><span>📊 Label Studio</span></div>
+          <div class="tool-badge"><span>🚀 Roboflow Ecosystem</span></div>
+          <div class="tool-badge"><span>📐 COCO &amp; Pascal VOC</span></div>
+          <div class="tool-badge"><span>📦 YOLOv8 / YOLOv11 Segmentation</span></div>
+          <div class="tool-badge"><span>🏥 3D Slicer / DICOM</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===== FAQ ACCORDION ===== -->
+    <section class="section" id="faq">
+      <div class="section-header-center">
+        <div class="badge-tag">❓ Frequently Asked Questions</div>
+        <h2 class="section-title split-text reveal">Everything You Need <span class="gradient-text">to Know</span></h2>
+        <p class="section-desc reveal">
+          Clear answers about pricing models, turnaround times, sample batches, and data security protocols.
+        </p>
+      </div>
+
+      <div class="faq-container">
+
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is your typical turnaround time for pilot and production batches?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              For free pilot batches (up to 50 images or 5 video clips), we deliver within <strong>24 hours</strong> including a complete QA metric audit report. For full-scale production contracts, we scale annotator pods to match your throughput requirements, comfortably delivering 10,000 to 50,000+ annotations per week.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How does your team guarantee a 99.8% pixel accuracy SLA?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              We employ a 4-Tier Human-in-the-Loop pipeline. Every frame is hand-checked at high magnification by trained annotators, verified against our programmatic geometry linter (detecting self-intersections and vertex bleeds), and audited by senior QA leads with an IoU consensus threshold of 98.5%+. Any frame failing the threshold is immediately recycled back into the refinement queue.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can you maintain persistent object IDs across thousands of video frames?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Yes! For video object segmentation (VOS), maintaining trajectory continuity and ID persistence is essential. We use CVAT and SAM 2 tracking algorithms combined with human verification to guarantee that objects passing behind trees, pedestrians, or temporary occlusions retain their identical Track ID throughout the video sequence.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do you handle strict data privacy and NDA confidentiality?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              We sign bilateral NDAs before receiving any proprietary client assets. Annotators work on air-gapped, isolated workstations with disabled local external drives, encrypted disk storage, and zero data leakage. Data transfers occur strictly via presigned AWS S3 / GCS buckets or encrypted enterprise drives.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What pricing models do you offer for annotation projects?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              We provide flexible, transparent pricing tailored to your workflow:
+              <br><br>
+              • <strong>Per-Image / Per-Instance:</strong> Best for predictable, fixed-scope image batches.<br>
+              • <strong>Per-Video Frame:</strong> Calculated based on instance density and tracking complexity.<br>
+              • <strong>Dedicated Annotator Pod:</strong> Full-time dedicated annotator teams managed exclusively for your company on monthly retainer.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can we request annotations in custom or proprietary JSON schemas?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Absolutely. In addition to standard formats (COCO, YOLO, Pascal VOC, CVAT XML, MOTS), our in-house Python engineering team can export annotations into any proprietary schema, database format, or internal training pipeline you require.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== WHATSAPP CONVERSION BANNER ===== -->
+    <section class="section" style="padding-top: 40px; padding-bottom: 120px;">
+      <div class="whatsapp-banner-cta reveal reveal-scale">
+        <div class="whatsapp-content">
+          <div class="badge-tag green" style="margin-bottom: 12px;">⚡ Instant 15-Minute Response</div>
+          <h3>Ready to Scale Your Computer Vision Model?</h3>
+          <p>
+            Connect directly with our Lead Annotation Engineer on WhatsApp. Discuss your dataset, define custom edge-case protocols, and receive a <strong>free 50-image or 5-clip calibration batch</strong> within 24 hours.
+          </p>
+        </div>
+        <div>
+          <a href="https://wa.me/8801952767958?text=Hello%20GrafiGrow%2C%20I%20am%20ready%20to%20send%20a%20pilot%20sample%20batch%20for%20image%2Fvideo%20segmentation." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span>Chat on WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== UNIVERSAL FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/logo.svg" alt="GrafiGrow">
+        <span>GrafiGrow</span>
+      </div>
+      <p style="margin-bottom: 12px; color: var(--text-secondary);">Enterprise Computer Vision Data Annotation &amp; High-Impact Design Agency.</p>
+      <div style="display: flex; gap: 20px; justify-content: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+        <a href="/">Home</a>
+        <a href="/annotation">Segmentation &amp; Annotation</a>
+        <a href="https://wa.me/8801952767958" target="_blank" rel="noopener noreferrer">WhatsApp Support</a>
+        <a href="mailto:grafigrowofficial@gmail.com">Email Us</a>
+      </div>
+      <p>© 2026 GrafiGrow. All rights reserved. Precision Verified.</p>
+    </div>
+  </footer>
+
+  <!-- ===== VIDEO SCREEN RECORDING MODAL ===== -->
+  <div class="modal-overlay" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+    <div class="modal-video-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 20px; border-bottom:1px solid var(--border-glass); background:var(--bg-secondary);">
+        <h4 id="videoModalTitle" style="font-size:1.05rem; color:var(--text-primary);"></h4>
+        <button class="modal-close" id="videoModalClose" style="position:static;">✕</button>
+      </div>
+      <div class="video-aspect">
+        <iframe id="videoIframe" src="" title="Video Proof Player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SCREENSHOT LIGHTBOX MODAL ===== -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+    <div class="lightbox-content">
+      <div class="lightbox-header">
+        <h4 id="lightboxTitle">Workspace Screenshot Inspection</h4>
+        <button class="modal-close" id="lightboxClose" style="position:static;">✕</button>
+      </div>
+      <div class="lightbox-body">
+        <div class="lightbox-img-area">
+          <img id="lightboxImg" src="" alt="High-Resolution Annotation Workspace Proof">
+        </div>
+        <div class="lightbox-side-panel">
+          <div class="spec-item">
+            <span class="spec-label">Production Batch</span>
+            <span class="spec-val" id="lightboxBatch" style="color:#4ade80;"></span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Annotation Tool</span>
+            <span class="spec-val" id="lightboxTool"></span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Pixel Accuracy Benchmark</span>
+            <span class="spec-val" id="lightboxAccuracy" style="color:#4ade80;"></span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Instance Volume</span>
+            <span class="spec-val" id="lightboxInstances"></span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Quality Status</span>
+            <span class="spec-val" style="color:#4ade80;">🟢 Audited &amp; QA Passed</span>
+          </div>
+          <div style="margin-top:auto; padding-top:20px;">
+            <a id="lightboxWhatsappBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero" style="width:100%; justify-content:center; padding:12px; font-size:0.9rem;">
+              <span>Inquire on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FLOATING WHATSAPP RADAR PILL ===== -->
+  <a href="https://wa.me/8801952767958?text=Hi%20GrafiGrow%2C%20I%20am%20reviewing%20your%20Segmentation%20%26%20Annotation%20portal%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="floating-whatsapp-pill" title="Chat with Lead Annotator on WhatsApp">
+    <span class="whatsapp-radar-dot"></span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>Chat on WhatsApp</span>
+  </a>
+
+  <!-- Scripts -->
+  <script src="/script.js"></script>
+  <script src="/annotation.js"></script>
+</body>
+
+</html>

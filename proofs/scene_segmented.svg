@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="100%" height="100%">
+  <!-- Embed background raw scene (faded) -->
+  <defs>
+    <linearGradient id="skyGradS" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a0c16"/>
+      <stop offset="60%" stop-color="#141828"/>
+      <stop offset="100%" stop-color="#1e243d"/>
+    </linearGradient>
+    <linearGradient id="roadGradS" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#181a24"/>
+      <stop offset="100%" stop-color="#0c0d12"/>
+    </linearGradient>
+    <linearGradient id="bldgGradS" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a1d2e"/>
+      <stop offset="100%" stop-color="#0f111c"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="340" fill="url(#skyGradS)"/>
+  <rect x="40" y="80" width="160" height="260" fill="url(#bldgGradS)"/>
+  <rect x="220" y="120" width="130" height="220" fill="#131624"/>
+  <rect x="370" y="60" width="190" height="280" fill="url(#bldgGradS)"/>
+  <rect x="580" y="100" width="140" height="240" fill="#151929"/>
+  <rect x="740" y="50" width="180" height="290" fill="url(#bldgGradS)"/>
+  <rect x="940" y="110" width="220" height="230" fill="#121522"/>
+  <polygon points="0,340 1200,340 1200,380 0,380" fill="#2a2e42"/>
+  <polygon points="0,380 1200,380 1200,600 0,600" fill="url(#roadGradS)"/>
+
+  <!-- ============================================== -->
+  <!-- SEGMENTATION OVERLAYS WITH PRECISE POLYGONS -->
+  <!-- ============================================== -->
+
+  <!-- 1. Sky Semantic Mask (Cyan) -->
+  <polygon points="0,0 1200,0 1200,340 0,340" fill="#06b6d4" fill-opacity="0.22" stroke="#0891b2" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <rect x="40" y="15" width="165" height="22" rx="4" fill="#0891b2"/>
+  <text x="48" y="30" fill="#fff" font-family="monospace" font-size="11" font-weight="bold">CLASS: SKY [IoU: 99.8%]</text>
+
+  <!-- 2. Buildings Semantic Mask (Slate/Indigo) -->
+  <g fill="#6366f1" fill-opacity="0.32" stroke="#4f46e5" stroke-width="1.5">
+    <polygon points="40,80 200,80 200,340 40,340"/>
+    <polygon points="220,120 350,120 350,340 220,340"/>
+    <polygon points="370,60 560,60 560,340 370,340"/>
+    <polygon points="580,100 720,100 720,340 580,340"/>
+    <polygon points="740,50 920,50 920,340 740,340"/>
+    <polygon points="940,110 1160,110 1160,340 940,340"/>
+  </g>
+  <rect x="760" y="60" width="185" height="22" rx="4" fill="#4f46e5"/>
+  <text x="768" y="75" fill="#fff" font-family="monospace" font-size="11" font-weight="bold">CLASS: BUILDING [99.1%]</text>
+
+  <!-- 3. Sidewalk Mask (Purple) -->
+  <polygon points="0,340 1200,340 1200,380 0,380" fill="#a855f7" fill-opacity="0.35" stroke="#9333ea" stroke-width="2"/>
+  <rect x="30" y="348" width="180" height="22" rx="4" fill="#9333ea"/>
+  <text x="38" y="363" fill="#fff" font-family="monospace" font-size="11" font-weight="bold">CLASS: SIDEWALK [99.5%]</text>
+
+  <!-- 4. Drivable Roadway Mask (Blue) -->
+  <polygon points="0,380 1200,380 1200,600 0,600" fill="#2563eb" fill-opacity="0.38" stroke="#1d4ed8" stroke-width="2"/>
+  <rect x="30" y="555" width="220" height="24" rx="4" fill="#1d4ed8"/>
+  <text x="38" y="571" fill="#fff" font-family="monospace" font-size="12" font-weight="bold">CLASS: ROAD_DRIVABLE [99.9%]</text>
+
+  <!-- 5. Vehicle 1 (Autonomous SUV - Red Instance Mask) -->
+  <g id="seg-car1">
+    <polygon points="625,445 638,390 708,338 822,338 892,390 922,400 922,455 898,455 860,490 830,490 820,455 720,455 685,490 655,490 640,455" fill="#ef4444" fill-opacity="0.55" stroke="#dc2626" stroke-width="2.5"/>
+    <!-- Polygon Vertex Handles (CVAT style) -->
+    <circle cx="625" cy="445" r="3" fill="#ffffff" stroke="#dc2626"/>
+    <circle cx="638" cy="390" r="3" fill="#ffffff" stroke="#dc2626"/>
+    <circle cx="708" cy="338" r="3" fill="#ffffff" stroke="#dc2626"/>
+    <circle cx="822" cy="338" r="3" fill="#ffffff" stroke="#dc2626"/>
+    <circle cx="892" cy="390" r="3" fill="#ffffff" stroke="#dc2626"/>
+    <circle cx="922" cy="400" r="3" fill="#ffffff" stroke="#dc2626"/>
+    <circle cx="922" cy="455" r="3" fill="#ffffff" stroke="#dc2626"/>
+    <circle cx="860" cy="490" r="3" fill="#ffffff" stroke="#dc2626"/>
+    <circle cx="685" cy="490" r="3" fill="#ffffff" stroke="#dc2626"/>
+    <!-- Bounding Box & Label -->
+    <rect x="620" y="315" width="305" height="180" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="6 3"/>
+    <rect x="620" y="315" width="180" height="22" rx="3" fill="#dc2626"/>
+    <text x="626" y="330" fill="#fff" font-family="monospace" font-size="11" font-weight="bold">ID #01: CAR [IoU: 99.8%]</text>
+  </g>
+
+  <!-- 6. Vehicle 2 (Sedan - Orange Instance Mask) -->
+  <g id="seg-car2">
+    <polygon points="288,405 298,378 344,352 396,352 426,378 436,405 418,405 402,432 380,432 370,405 338,405 322,432 300,432 295,405" fill="#f97316" fill-opacity="0.55" stroke="#ea580c" stroke-width="2"/>
+    <rect x="285" y="332" width="155" height="105" fill="none" stroke="#f97316" stroke-width="1.2" stroke-dasharray="4 2"/>
+    <rect x="285" y="332" width="145" height="20" rx="3" fill="#ea580c"/>
+    <text x="290" y="346" fill="#fff" font-family="monospace" font-size="10" font-weight="bold">ID #02: CAR [98.9%]</text>
+  </g>
+
+  <!-- 7. Pedestrian Instance Mask (Green) -->
+  <g id="seg-pedestrian">
+    <polygon points="508,295 522,305 524,320 528,365 528,422 516,422 512,375 504,375 496,422 488,422 492,330 488,325 500,298" fill="#10b981" fill-opacity="0.65" stroke="#059669" stroke-width="2.5"/>
+    <!-- Skeletal joints / keypoints -->
+    <circle cx="510" cy="305" r="3.5" fill="#ffffff" stroke="#059669" stroke-width="1.5"/>
+    <circle cx="510" cy="335" r="3.5" fill="#ffffff" stroke="#059669" stroke-width="1.5"/>
+    <circle cx="504" cy="385" r="3.5" fill="#ffffff" stroke="#059669" stroke-width="1.5"/>
+    <circle cx="516" cy="385" r="3.5" fill="#ffffff" stroke="#059669" stroke-width="1.5"/>
+    <!-- Label -->
+    <rect x="470" y="270" width="180" height="22" rx="3" fill="#059669"/>
+    <text x="476" y="285" fill="#fff" font-family="monospace" font-size="11" font-weight="bold">ID #03: PEDESTRIAN [99.4%]</text>
+  </g>
+
+  <!-- 8. Traffic Sign (Yellow) -->
+  <g id="seg-sign">
+    <polygon points="1043,205 1070,250 1016,250" fill="#eab308" fill-opacity="0.7" stroke="#ca8a04" stroke-width="2"/>
+    <rect x="1000" y="180" width="155" height="22" rx="3" fill="#ca8a04"/>
+    <text x="1006" y="195" fill="#fff" font-family="monospace" font-size="10" font-weight="bold">TRAFFIC_SIGN [99.7%]</text>
+  </g>
+
+  <!-- Top QA Verification Bar -->
+  <rect x="20" y="20" width="460" height="34" rx="6" fill="rgba(10,12,22,0.92)" stroke="rgba(37,211,102,0.6)" stroke-width="1.5"/>
+  <circle cx="40" cy="37" r="6" fill="#25d366"/>
+  <text x="56" y="42" fill="#4ade80" font-family="monospace" font-size="13" font-weight="bold">AUDITED BY QA LEAD • 99.8% PIXEL CONVERGENCE</text>
+</svg>
