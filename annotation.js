@@ -542,14 +542,16 @@ document.addEventListener('DOMContentLoaded', () => {
   revealElements.forEach(el => observer.observe(el));
 
   // =========================================================================
-  // 10. RE-ENGINEERED MOBILE HAMBURGER
+  // 10. RE-ENGINEERED ROBUST MOBILE HAMBURGER CONTROLLER
   // =========================================================================
   const hamburger = document.getElementById('hamburger');
   const navCenterMenu = document.getElementById('navCenterMenu');
   if (hamburger && navCenterMenu) {
-    hamburger.addEventListener('click', () => {
-      navCenterMenu.classList.toggle('open');
-      hamburger.classList.toggle('active');
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      const isOpen = navCenterMenu.classList.toggle('open');
+      hamburger.classList.toggle('active', isOpen);
     });
 
     // Close when clicking any link
@@ -558,6 +560,22 @@ document.addEventListener('DOMContentLoaded', () => {
         navCenterMenu.classList.remove('open');
         hamburger.classList.remove('active');
       });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (navCenterMenu.classList.contains('open') && !navCenterMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        navCenterMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navCenterMenu.classList.contains('open')) {
+        navCenterMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+      }
     });
   }
 
