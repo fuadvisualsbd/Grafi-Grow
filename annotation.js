@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tool: 'EgoScale • CVAT Cloud Core',
       accuracy: '99.8% QA Pass',
       instances: '4,850 video segments',
-      imageSrc: '/proofs/Screenshot_1.png'
+      imageSrc: '/proofs/proof_autonomous_driving.png'
     },
     {
       id: 'proof-v3',
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tool: 'CVAT • Multi-Class Polygon',
       accuracy: '99.5% Consistency',
       instances: '3,200 masks',
-      imageSrc: '/proofs/Screenshot_2.png'
+      imageSrc: '/proofs/proof_medical_segmentation.png'
     },
     {
       id: 'proof-v4',
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tool: 'Custom Client Suite • CVAT',
       accuracy: '99.9% Boundary Fit',
       instances: '12,400 objects',
-      imageSrc: '/proofs/Screenshot_3.png'
+      imageSrc: '/proofs/proof_industrial_qa.png'
     },
     {
       id: 'proof-v5',
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tool: 'EgoScale Turbo Runtime',
       accuracy: '99.7% Benchmark',
       instances: 'Automated Stream',
-      imageSrc: '/proofs/Screenshot_4.png'
+      imageSrc: '/proofs/proof_drone_tracking.png'
     },
     {
       id: 'proof-img5',
@@ -332,20 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. REAL WORKFLOW VIDEO + VOICE NARRATION + PROOF GALLERY
   // =========================================================================
 
-  // --- Video Tab Switcher ---
-  const demoTabs = document.querySelectorAll('.demo-tab');
-  const demoVideoFrame = document.getElementById('demoVideoFrame');
-
-  demoTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      demoTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      const videoId = tab.getAttribute('data-video');
-      if (demoVideoFrame && videoId) {
-        demoVideoFrame.src = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&color=white`;
-      }
-    });
-  });
+// Native GrafiGrow Commercial Video Player Active
 
   // --- Voice Narration Player ---
   const voiceAudio = document.getElementById('explainerAudio');
