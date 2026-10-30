@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tool: 'EgoScale • CVAT Cloud Core',
       accuracy: '99.8% QA Pass',
       instances: '4,850 video segments',
-      imageSrc: '/proofs/proof_autonomous_driving.png'
+      imageSrc: '/proofs/real_proof_1.png'
     },
     {
       id: 'proof-v3',
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tool: 'CVAT • Multi-Class Polygon',
       accuracy: '99.5% Consistency',
       instances: '3,200 masks',
-      imageSrc: '/proofs/proof_medical_segmentation.png'
+      imageSrc: '/proofs/real_proof_1.png'
     },
     {
       id: 'proof-v4',
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tool: 'Custom Client Suite • CVAT',
       accuracy: '99.9% Boundary Fit',
       instances: '12,400 objects',
-      imageSrc: '/proofs/proof_industrial_qa.png'
+      imageSrc: '/proofs/real_proof_1.png'
     },
     {
       id: 'proof-v5',
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tool: 'EgoScale Turbo Runtime',
       accuracy: '99.7% Benchmark',
       instances: 'Automated Stream',
-      imageSrc: '/proofs/proof_drone_tracking.png'
+      imageSrc: '/proofs/real_proof_1.png'
     },
     {
       id: 'proof-img5',
@@ -558,6 +558,48 @@ document.addEventListener('DOMContentLoaded', () => {
         navCenterMenu.classList.remove('open');
         hamburger.classList.remove('active');
       });
+    });
+  }
+
+
+  // =========================================================================
+  // OFFICIAL GRAFIGROW COMMERCIAL AD CONTROLLER
+  // =========================================================================
+  const adVideo = document.getElementById('grafiGrowAdVideo');
+  const adVideoWrapper = document.getElementById('adVideoWrapper');
+  const adPlayOrbBtn = document.getElementById('adPlayOrbBtn');
+
+  function toggleAdPlayback() {
+    if (!adVideo) return;
+    if (adVideo.paused) {
+      adVideo.play().then(() => {
+        if (adVideoWrapper) adVideoWrapper.classList.add('playing');
+      }).catch(err => {
+        console.warn('Playback error:', err);
+      });
+    } else {
+      adVideo.pause();
+      if (adVideoWrapper) adVideoWrapper.classList.remove('playing');
+    }
+  }
+
+  if (adPlayOrbBtn) {
+    adPlayOrbBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleAdPlayback();
+    });
+  }
+
+  if (adVideo) {
+    adVideo.addEventListener('click', toggleAdPlayback);
+    adVideo.addEventListener('play', () => {
+      if (adVideoWrapper) adVideoWrapper.classList.add('playing');
+    });
+    adVideo.addEventListener('pause', () => {
+      if (adVideoWrapper) adVideoWrapper.classList.remove('playing');
+    });
+    adVideo.addEventListener('ended', () => {
+      if (adVideoWrapper) adVideoWrapper.classList.remove('playing');
     });
   }
 
