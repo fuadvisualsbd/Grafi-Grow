@@ -105,3 +105,4 @@
   <!-- Watermark / Timestamp -->
   <text x="20" y="35" fill="#64748b" font-family="monospace" font-size="14" letter-spacing="1">RAW CAMERA STREAM • 1920x1080@60FPS • SENSOR_ID: #CAM_FRONT_01</text>
 </svg>
+

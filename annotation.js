@@ -190,13 +190,11 @@ document.addEventListener('DOMContentLoaded', () => {
       proofsGrid.appendChild(card);
     });
 
-    // Trigger reveal animations
-    document.querySelectorAll('.proof-card.reveal').forEach(el => {
-      el.classList.add('visible');
-    });
+    // Re-bind card raycast coordinates
+    bindCardRaycast();
   }
 
-  // Filter Buttons Event Listener
+  // Filter Buttons
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
@@ -226,7 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxClose = document.getElementById('lightboxClose');
   const lightboxWhatsappBtn = document.getElementById('lightboxWhatsappBtn');
 
-  // Delegated click for proof cards
   if (proofsGrid) {
     proofsGrid.addEventListener('click', e => {
       const mediaWrapper = e.target.closest('.proof-media-wrapper');
@@ -249,7 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxInstances.textContent = item.instances;
         lightboxBatch.textContent = item.date;
         
-        // Custom WhatsApp Link for this specific proof
         const waMsg = encodeURIComponent(`Hi GrafiGrow, I am inquiring about the dataset from your proof: "${item.title}" (${item.tool}). I need similar annotation.`);
         lightboxWhatsappBtn.href = `https://wa.me/8801952767958?text=${waMsg}`;
 
@@ -308,7 +304,6 @@ document.addEventListener('DOMContentLoaded', () => {
       rawInner.style.width = `${rect.width}px`;
     }
 
-    // Set initial size
     window.addEventListener('resize', () => {
       rawInner.style.width = `${comparisonBox.offsetWidth}px`;
     });
@@ -321,7 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateSlider(e.clientX);
     });
 
-    // Touch support
     sliderHandle.addEventListener('touchstart', () => { isDragging = true; }, { passive: true });
     window.addEventListener('touchend', () => { isDragging = false; });
     window.addEventListener('touchmove', e => {
@@ -329,14 +323,218 @@ document.addEventListener('DOMContentLoaded', () => {
       updateSlider(e.touches[0].clientX);
     });
 
-    // Click anywhere on comparison box to slide
     comparisonBox.addEventListener('click', e => {
       updateSlider(e.clientX);
     });
   }
 
   // =========================================================================
-  // 5. FAQ ACCORDION
+  // 5. MOTION GRAPHICS EXPLAINER VIDEO PLAYER (STUDIO TTS + STAGE SYNC)
+  // =========================================================================
+  const audio = document.getElementById('explainerAudio');
+  const playerContainer = document.querySelector('.motion-player-container');
+  const stagePlayTrigger = document.getElementById('stagePlayTrigger');
+  const ctrlPlayBtn = document.getElementById('ctrlPlayBtn');
+  const ctrlPlaySvg = document.getElementById('ctrlPlaySvg');
+  const playIconSvg = document.getElementById('playIconSvg');
+  const ctrlRestartBtn = document.getElementById('ctrlRestartBtn');
+  const ctrlMuteBtn = document.getElementById('ctrlMuteBtn');
+  const timeDisplay = document.getElementById('timeDisplay');
+  const timelineBar = document.getElementById('timelineBar');
+  const timelineProgress = document.getElementById('timelineProgress');
+  const captionText = document.getElementById('captionText');
+  const stageSoundwave = document.getElementById('stageSoundwave');
+  const chapPills = document.querySelectorAll('.chap-pill');
+  const scenes = [
+    document.getElementById('scene1'),
+    document.getElementById('scene2'),
+    document.getElementById('scene3'),
+    document.getElementById('scene4'),
+    document.getElementById('scene5')
+  ];
+
+  const videoSubtitles = [
+    { start: 0, end: 7.5, scene: 0, text: 'Welcome to GrafiGrow AI Vision Lab. We are an enterprise data annotation and computer vision agency trusted worldwide.' },
+    { start: 7.5, end: 15.5, scene: 1, text: 'We specialize in high-precision image & video segmentation: from semantic masks to real-time tracking with SAM 2 and CVAT.' },
+    { start: 15.5, end: 23.5, scene: 2, text: 'Whether you need polygon labeling for autonomous driving, robotics pick-and-place, or dental AI, we deliver with 99.8% pixel accuracy.' },
+    { start: 23.5, end: 30.5, scene: 3, text: 'Every dataset undergoes a 4-tier human-in-the-loop QA check, exported in COCO, YOLO, or custom schemas under strict NDA security.' },
+    { start: 30.5, end: 40.0, scene: 4, text: 'Ready to scale your models? Chat with our lead engineer on WhatsApp today and claim your free 50-image pilot sample batch!' }
+  ];
+
+  function formatTime(sec) {
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  }
+
+  function togglePlayAudio() {
+    if (!audio) return;
+    if (audio.paused) {
+      audio.play().then(() => {
+        updatePlayIcons(true);
+      }).catch(err => console.log('Playback error:', err));
+    } else {
+      audio.pause();
+      updatePlayIcons(false);
+    }
+  }
+
+  function updatePlayIcons(isPlaying) {
+    if (!playerContainer) return;
+    if (isPlaying) {
+      playerContainer.classList.add('playing');
+      if (stageSoundwave) stageSoundwave.classList.add('active');
+      const pauseIcon = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+      if (ctrlPlaySvg) ctrlPlaySvg.innerHTML = pauseIcon;
+      if (playIconSvg) playIconSvg.innerHTML = pauseIcon;
+    } else {
+      playerContainer.classList.remove('playing');
+      if (stageSoundwave) stageSoundwave.classList.remove('active');
+      const playIcon = '<polygon points="5 3 19 12 5 21 5 3"/>';
+      if (ctrlPlaySvg) ctrlPlaySvg.innerHTML = playIcon;
+      if (playIconSvg) playIconSvg.innerHTML = playIcon;
+    }
+  }
+
+  if (stagePlayTrigger) stagePlayTrigger.addEventListener('click', togglePlayAudio);
+  if (ctrlPlayBtn) ctrlPlayBtn.addEventListener('click', togglePlayAudio);
+
+  if (ctrlRestartBtn && audio) {
+    ctrlRestartBtn.addEventListener('click', () => {
+      audio.currentTime = 0;
+      audio.play();
+      updatePlayIcons(true);
+    });
+  }
+
+  if (ctrlMuteBtn && audio) {
+    ctrlMuteBtn.addEventListener('click', () => {
+      audio.muted = !audio.muted;
+      ctrlMuteBtn.style.opacity = audio.muted ? '0.4' : '1';
+    });
+  }
+
+  if (audio) {
+    audio.addEventListener('timeupdate', () => {
+      const cur = audio.currentTime;
+      const dur = audio.duration || 33.5;
+      const pct = (cur / dur) * 100;
+
+      if (timelineProgress) timelineProgress.style.width = `${pct}%`;
+      if (timeDisplay) timeDisplay.textContent = `${formatTime(cur)} / ${formatTime(dur)}`;
+
+      // Synchronize scene and subtitle
+      const activeCue = videoSubtitles.find(cue => cur >= cue.start && cur < cue.end);
+      if (activeCue) {
+        if (captionText && captionText.textContent !== activeCue.text) {
+          captionText.textContent = activeCue.text;
+        }
+
+        // Switch active scene visual
+        scenes.forEach((sc, idx) => {
+          if (sc) sc.classList.toggle('active', idx === activeCue.scene);
+        });
+
+        // Switch active chapter pill
+        chapPills.forEach((pill, idx) => {
+          pill.classList.toggle('active', idx === activeCue.scene);
+        });
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      updatePlayIcons(false);
+      if (timelineProgress) timelineProgress.style.width = '100%';
+    });
+  }
+
+  // Scrubber click seek
+  if (timelineBar && audio) {
+    timelineBar.addEventListener('click', e => {
+      const rect = timelineBar.getBoundingClientRect();
+      const pos = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = pos * (audio.duration || 33.5);
+    });
+  }
+
+  // Chapter Jump Pills
+  chapPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const targetTime = parseFloat(pill.getAttribute('data-time'));
+      if (audio) {
+        audio.currentTime = targetTime;
+        if (audio.paused) togglePlayAudio();
+      }
+    });
+  });
+
+  // =========================================================================
+  // 6. KINETIC TYPOGRAPHY: ROTATING HEADLINE
+  // =========================================================================
+  const kineticWords = [
+    'Segmentation',
+    'Semantic Masks',
+    'SAM 2 Video Tracking',
+    'Instance Polygons',
+    '3D LiDAR Cuboids',
+    'Microscopic Defect QA'
+  ];
+  let wordIndex = 0;
+  const kineticWordEl = document.getElementById('kineticWord');
+
+  if (kineticWordEl) {
+    setInterval(() => {
+      kineticWordEl.classList.add('flip-out');
+      setTimeout(() => {
+        wordIndex = (wordIndex + 1) % kineticWords.length;
+        kineticWordEl.textContent = kineticWords[wordIndex];
+        kineticWordEl.classList.remove('flip-out');
+        kineticWordEl.classList.add('flip-in');
+        setTimeout(() => {
+          kineticWordEl.classList.remove('flip-in');
+        }, 50);
+      }, 420);
+    }, 2800);
+  }
+
+  // =========================================================================
+  // 7. MOTION GRAPHICS: POINTER SPOTLIGHT & CARD SPECULAR BORDER LIGHTING
+  // =========================================================================
+  const spotlight = document.getElementById('cursorSpotlight');
+  window.addEventListener('mousemove', e => {
+    if (spotlight) {
+      document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+    }
+  });
+
+  function bindCardRaycast() {
+    const interactiveCards = document.querySelectorAll('.cap-card, .metric-card, .proof-card, .checklist-card, .qa-step');
+    interactiveCards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const cardX = e.clientX - rect.left;
+        const cardY = e.clientY - rect.top;
+        card.style.setProperty('--card-x', `${cardX}px`);
+        card.style.setProperty('--card-y', `${cardY}px`);
+      });
+    });
+  }
+  bindCardRaycast();
+
+  // Kinetic Click Ripple Shockwave
+  window.addEventListener('click', e => {
+    if (e.target.closest('input, textarea, .modal-close')) return;
+    const ripple = document.createElement('div');
+    ripple.className = 'click-ripple';
+    ripple.style.left = `${e.clientX}px`;
+    ripple.style.top = `${e.clientY}px`;
+    document.body.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 650);
+  });
+
+  // =========================================================================
+  // 8. FAQ ACCORDION
   // =========================================================================
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
@@ -346,7 +544,6 @@ document.addEventListener('DOMContentLoaded', () => {
     questionBtn.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
 
-      // Close other FAQs
       faqItems.forEach(other => {
         if (other !== item) {
           other.classList.remove('active');
@@ -355,7 +552,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Toggle current
       if (isActive) {
         item.classList.remove('active');
         answer.style.maxHeight = null;
@@ -366,7 +562,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Open first FAQ by default
   if (faqItems.length > 0) {
     faqItems[0].classList.add('active');
     const firstAns = faqItems[0].querySelector('.faq-answer');
@@ -374,7 +569,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 6. SCROLL REVEAL OBSERVER
+  // 9. SCROLL REVEAL OBSERVER
   // =========================================================================
   const revealElements = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -389,14 +584,22 @@ document.addEventListener('DOMContentLoaded', () => {
   revealElements.forEach(el => observer.observe(el));
 
   // =========================================================================
-  // 7. MOBILE HAMBURGER
+  // 10. RE-ENGINEERED MOBILE HAMBURGER
   // =========================================================================
   const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  if (hamburger && navLinks) {
+  const navCenterMenu = document.getElementById('navCenterMenu');
+  if (hamburger && navCenterMenu) {
     hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+      navCenterMenu.classList.toggle('open');
       hamburger.classList.toggle('active');
+    });
+
+    // Close when clicking any link
+    navCenterMenu.querySelectorAll('.nav-link-item').forEach(link => {
+      link.addEventListener('click', () => {
+        navCenterMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+      });
     });
   }
 

@@ -74,6 +74,48 @@
         }
       },
       {
+        "@type": "VideoObject",
+        "name": "GrafiGrow AI Vision Lab — Image & Video Segmentation Explainer",
+        "description": "Discover GrafiGrow's enterprise image and video segmentation pipeline, Meta SAM 2 automated tracking, sub-pixel polygon QA, and free 50-image pilot sample batches.",
+        "thumbnailUrl": "https://grafigrow.vercel.app/proofs/data_annotation_project.png",
+        "uploadDate": "2026-10-30T12:00:00+06:00",
+        "duration": "PT0M35S",
+        "contentUrl": "https://grafigrow.vercel.app/proofs/explainer_voice.mp3",
+        "embedUrl": "https://grafigrow.vercel.app/annotation#explainer-video"
+      },
+      {
+        "@type": "HowTo",
+        "name": "How to Prepare and Submit Datasets for Computer Vision Segmentation",
+        "description": "5-step onboarding guide for machine learning teams to prepare and submit raw images, video streams, taxonomies, and export formats to GrafiGrow annotation agency.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Deliver Raw Media Files",
+            "text": "Transfer high-resolution images or video clips via AWS S3 presigned URLs, Google Cloud Storage, or Drive."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Define Class Ontology and Hierarchy",
+            "text": "Specify category taxonomies, sub-classes, attributes, and track ID persistence requirements."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Establish Edge-Case Rules",
+            "text": "Set minimum pixel bounding thresholds, occlusion handling rules, and glare/blur policies."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Select Target Export Schema",
+            "text": "Choose COCO JSON, YOLOv8/v11 segmentation TXT, Pascal VOC XML, MOTS, or custom schemas."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Calibrate with a Free Pilot Batch",
+            "text": "Receive a 50-image or 5-clip calibration benchmark with full IoU QA report within 24 hours."
+          }
+        ]
+      },
+      {
         "@type": "BreadcrumbList",
         "itemListElement": [
           {
@@ -142,42 +184,59 @@
 
 <body>
 
+  <!-- Ambient Dynamic Mouse Spotlight -->
+  <div id="cursorSpotlight" class="cursor-spotlight"></div>
+
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- Particle Background -->
   <canvas id="particles-canvas"></canvas>
 
-  <!-- ===== NAVBAR ===== -->
+  <!-- ===== RE-ENGINEERED LUXURY NAVBAR ===== -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
+      <!-- Brand Logo Lockup -->
       <a href="/" class="nav-logo">
         <img src="/logo.svg" alt="GrafiGrow Logo">
         <div class="nav-logo-text">
           <span>GrafiGrow</span>
-          <small class="nav-slogan">Designs &amp; AI Data Engineered For Growth</small>
+          <span class="nav-subtag">AI VISION LAB</span>
         </div>
       </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="/">Home</a></li>
-        <li><a href="#capabilities">Capabilities</a></li>
-        <li><a href="#interactive-demo">Live Demo</a></li>
-        <li><a href="#daily-proofs">Daily Proofs</a></li>
-        <li><a href="#client-checklist">What to Provide</a></li>
-        <li><a href="#qa-pipeline">QA Process</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="https://wa.me/8801952767958?text=Hi%20GrafiGrow%2C%20I%20am%20inquiring%20about%20your%20Image%20%26%20Video%20Segmentation%20Services." target="_blank" rel="noopener noreferrer" class="nav-cta">WhatsApp Us 💬</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+
+      <!-- Center Floating Pill Menu -->
+      <div class="nav-center-menu" id="navCenterMenu">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/" class="nav-link-item">Home</a></li>
+          <li><a href="#explainer-video" class="nav-link-item">Explainer Video</a></li>
+          <li><a href="#capabilities" class="nav-link-item">Capabilities</a></li>
+          <li><a href="#interactive-demo" class="nav-link-item">Live Demo</a></li>
+          <li><a href="#daily-proofs" class="nav-link-item">Daily Proofs</a></li>
+          <li><a href="#client-checklist" class="nav-link-item">Checklist</a></li>
+          <li><a href="#qa-pipeline" class="nav-link-item">QA Flow</a></li>
+          <li><a href="#faq" class="nav-link-item">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Right Action Area -->
+      <div class="nav-right-actions">
+        <a href="https://wa.me/8801952767958?text=Hi%20GrafiGrow%2C%20I%20am%20inquiring%20about%20your%20Image%20%26%20Video%20Segmentation%20Services." target="_blank" rel="noopener noreferrer" class="nav-whatsapp-pill" title="Chat on WhatsApp">
+          <span class="wa-dot"></span>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span>WhatsApp Us</span>
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
   <main id="main-content" class="annotation-page">
 
-    <!-- ===== HERO SECTION ===== -->
-    <section class="hero" style="min-height: 90vh; padding-top: 140px;">
+    <!-- ===== HERO SECTION WITH KINETIC TYPOGRAPHY ===== -->
+    <section class="hero" style="min-height: 88vh; padding-top: 130px; padding-bottom: 40px;">
       <div class="hero-glow red"></div>
       <div class="hero-glow blue"></div>
       <div class="hero-content" style="max-width: 980px;">
@@ -195,7 +254,14 @@
           <span>Enterprise Agency • Daily Production Logs Verified</span>
         </div>
 
-        <h1>High-Precision Image &amp; Video<br><span class="gradient-text">Segmentation Services</span></h1>
+        <!-- Kinetic Headline -->
+        <h1 class="kinetic-hero-h1">
+          High-Precision Image &amp; Video<br>
+          <span class="kinetic-rotator-wrap">
+            <span class="kinetic-rotator-word" id="kineticWord">Segmentation</span>
+          </span>
+        </h1>
+
         <p class="subtitle" style="max-width: 760px;">
           Pixel-perfect semantic, instance, and video object tracking (VOS) for Computer Vision models. Powered by CVAT, SAM 2 foundation models, and rigorous human-in-the-loop engineering. Built for Autonomous Systems, Medical AI, Robotics, and Manufacturing QA.
         </p>
@@ -206,12 +272,12 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             <span>Chat on WhatsApp (+880 1952 767 958)</span>
           </a>
-          <a href="#daily-proofs" class="btn-primary">
-            <span>Explore Daily Proofs</span>
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          <a href="#explainer-video" class="btn-primary">
+            <span>Watch Explainer Video</span>
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </a>
-          <a href="#client-checklist" class="btn-secondary">
-            <span>What to Provide</span>
+          <a href="#daily-proofs" class="btn-secondary">
+            <span>Explore Daily Proofs</span>
           </a>
         </div>
 
@@ -244,6 +310,186 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ===== KINETIC CYBER MARQUEE TAPE ===== -->
+    <div class="kinetic-ticker-wrap">
+      <div class="kinetic-ticker-track" id="kineticTicker">
+        <span class="ticker-item"><span class="ticker-dot">⚡</span> 99.8% PIXEL ACCURACY SLA</span>
+        <span class="ticker-sep">•</span>
+        <span class="ticker-item"><span class="ticker-dot">🎬</span> SAM 2 REAL-TIME VIDEO TRACKING</span>
+        <span class="ticker-sep">•</span>
+        <span class="ticker-item"><span class="ticker-dot">🔬</span> SUB-PIXEL POLYGON MASKING</span>
+        <span class="ticker-sep">•</span>
+        <span class="ticker-item"><span class="ticker-dot">🛡️</span> 4-TIER QA HUMAN-IN-THE-LOOP</span>
+        <span class="ticker-sep">•</span>
+        <span class="ticker-item"><span class="ticker-dot">📦</span> COCO, YOLOv8/v11, MOTS, VOC</span>
+        <span class="ticker-sep">•</span>
+        <span class="ticker-item"><span class="ticker-dot">⏱️</span> 24H PILOT TURNAROUND</span>
+        <span class="ticker-sep">•</span>
+        <span class="ticker-item"><span class="ticker-dot">🔒</span> STRICT ISO/SOC 2 AIR-GAPPED NDA</span>
+        <span class="ticker-sep">•</span>
+        <span class="ticker-item"><span class="ticker-dot">⚡</span> 99.8% PIXEL ACCURACY SLA</span>
+        <span class="ticker-sep">•</span>
+        <span class="ticker-item"><span class="ticker-dot">🎬</span> SAM 2 REAL-TIME VIDEO TRACKING</span>
+        <span class="ticker-sep">•</span>
+        <span class="ticker-item"><span class="ticker-dot">🔬</span> SUB-PIXEL POLYGON MASKING</span>
+        <span class="ticker-sep">•</span>
+        <span class="ticker-item"><span class="ticker-dot">🛡️</span> 4-TIER QA HUMAN-IN-THE-LOOP</span>
+        <span class="ticker-sep">•</span>
+        <span class="ticker-item"><span class="ticker-dot">📦</span> COCO, YOLOv8/v11, MOTS, VOC</span>
+        <span class="ticker-sep">•</span>
+        <span class="ticker-item"><span class="ticker-dot">⏱️</span> 24H PILOT TURNAROUND</span>
+        <span class="ticker-sep">•</span>
+        <span class="ticker-item"><span class="ticker-dot">🔒</span> STRICT ISO/SOC 2 AIR-GAPPED NDA</span>
+      </div>
+    </div>
+
+    <!-- ===== MOTION GRAPHICS EXPLAINER VIDEO SECTION (VOICEOVER + MOTION GFX) ===== -->
+    <section class="section" id="explainer-video" style="padding-top: 60px;">
+      <div class="section-glow-orb" style="background:var(--accent-red);top:10%;right:-10%"></div>
+      <div class="section-header-center">
+        <div class="badge-tag green">🎬 Agency Motion Explainer</div>
+        <h2 class="section-title split-text reveal">Who We Are &amp; <span class="gradient-text">What We Do</span></h2>
+        <p class="section-desc reveal">
+          Watch our high-fidelity motion graphics explainer with studio narration. Learn how our computer vision pipelines, Meta SAM 2 integrations, and 4-tier human QA guarantee 99.8% pixel accuracy.
+        </p>
+      </div>
+
+      <div class="motion-player-container reveal reveal-scale">
+        <!-- Player Top Bar / HUD -->
+        <div class="player-hud-bar">
+          <div class="player-hud-status">
+            <span class="live-pulse"></span>
+            <span>GRAFIGROW AI VISION LAB • SYSTEM OVERVIEW</span>
+          </div>
+          <div class="player-hud-tags">
+            <span class="hud-chip">48kHz STUDIO VOICE</span>
+            <span class="hud-chip">60FPS MOTION GFX</span>
+          </div>
+        </div>
+
+        <!-- Video Canvas / Visual Stage -->
+        <div class="motion-stage" id="motionStage">
+          <!-- Ambient Grid & Soundwave Overlay -->
+          <div class="stage-grid"></div>
+          <div class="stage-soundwave" id="stageSoundwave">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <!-- Scene 1: Agency Brand Intro -->
+          <div class="motion-scene active" id="scene1">
+            <div class="scene-badge">CHAPTER 01 / 05 • AGENCY OVERVIEW</div>
+            <div class="scene-icon-wrap">
+              <img src="/logo.svg" alt="GrafiGrow Vision" class="scene-hero-logo">
+            </div>
+            <h3 class="scene-title">GrafiGrow <span class="gradient-text">AI Vision Lab</span></h3>
+            <p class="scene-desc">Enterprise Computer Vision Data Annotation &amp; High-Precision Segmentation Agency.</p>
+            <div class="scene-metric-pill">Trusted by ML Teams Worldwide • 99.8% Accuracy SLA</div>
+          </div>
+
+          <!-- Scene 2: Core Segmentation -->
+          <div class="motion-scene" id="scene2">
+            <div class="scene-badge">CHAPTER 02 / 05 • SEGMENTATION SUITE</div>
+            <div class="scene-graphic-grid">
+              <div class="gfx-item"><span class="gfx-icon">🗺️</span><strong>Semantic Masks</strong><small>Per-Pixel Cityscapes</small></div>
+              <div class="gfx-item"><span class="gfx-icon">📐</span><strong>Instance Polygons</strong><small>Sub-pixel Overlap IDs</small></div>
+              <div class="gfx-item"><span class="gfx-icon">🎬</span><strong>Video Object Tracking</strong><small>VOS &amp; Temporal Continuity</small></div>
+              <div class="gfx-item"><span class="gfx-icon">📡</span><strong>3D LiDAR Point Cloud</strong><small>3D Sensor Fusion</small></div>
+            </div>
+          </div>
+
+          <!-- Scene 3: SAM 2 & CVAT Tooling -->
+          <div class="motion-scene" id="scene3">
+            <div class="scene-badge">CHAPTER 03 / 05 • MODEL-ASSISTED SPEED</div>
+            <div class="scene-radar-box">
+              <div class="radar-scan"></div>
+              <h4 style="font-size:1.2rem; margin-bottom:6px;">Meta SAM 2 + CVAT Engine</h4>
+              <p style="font-size:0.86rem; color:var(--text-secondary); margin-bottom:12px;">Real-time promptable video propagation with human-in-the-loop micro-refinement.</p>
+              <div class="scene-tags">
+                <span class="tech-chip">Auto-Next Queuing</span>
+                <span class="tech-chip">Trajectory Persistence</span>
+                <span class="tech-chip">Sub-Pixel Bezier</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scene 4: 4-Tier QA & Security -->
+          <div class="motion-scene" id="scene4">
+            <div class="scene-badge">CHAPTER 04 / 05 • QUALITY &amp; COMPLIANCE</div>
+            <div class="scene-qa-flow">
+              <div class="qa-flow-node"><span>1</span> AI Pre-Label</div>
+              <div class="qa-arrow">→</div>
+              <div class="qa-flow-node"><span>2</span> Human Refine</div>
+              <div class="qa-arrow">→</div>
+              <div class="qa-flow-node"><span>3</span> Python Linter</div>
+              <div class="qa-arrow">→</div>
+              <div class="qa-flow-node active"><span>4</span> 98.5%+ IoU Consensus</div>
+            </div>
+            <p style="margin-top:16px; font-size:0.85rem; color:#4ade80;">🔒 100% Air-Gapped Workstations • Zero Persistent Cloud Storage • Bilateral NDA</p>
+          </div>
+
+          <!-- Scene 5: Claim Free Pilot -->
+          <div class="motion-scene" id="scene5">
+            <div class="scene-badge">CHAPTER 05 / 05 • LAUNCH YOUR PILOT</div>
+            <h3 style="font-size:1.6rem; margin-bottom:10px;">Claim Free 50-Image Sample Batch</h3>
+            <p style="color:var(--text-secondary); max-width:480px; margin:0 auto 20px;">Delivered within 24 hours with full IoU metric reports and custom format calibration.</p>
+            <a href="https://wa.me/8801952767958?text=Hi%20GrafiGrow%2C%20I%20just%20watched%20your%20explainer%20video%20and%20want%20to%20claim%20our%20free%2050-image%20pilot%20batch." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero" style="font-size:0.95rem; padding:12px 28px;">
+              <span>Claim Free Pilot on WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- Big Play / Pause Overlay Button (Center of Stage) -->
+          <button class="stage-play-trigger" id="stagePlayTrigger" aria-label="Play or Pause Explainer Video">
+            <div class="play-orb" id="playOrb">
+              <svg id="playIconSvg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <span class="play-pulse-ring"></span>
+          </button>
+        </div>
+
+        <!-- Synchronized Kinetic Captions Bar -->
+        <div class="kinetic-caption-bar" id="captionBar">
+          <span class="caption-speaker">NARRATOR:</span>
+          <span class="caption-text" id="captionText">Click play to watch our 35-second motion graphics agency explainer with voiceover.</span>
+        </div>
+
+        <!-- Controls Footer Bar -->
+        <div class="player-controls-bar">
+          <div class="controls-left">
+            <button class="ctrl-btn" id="ctrlPlayBtn" title="Play / Pause">
+              <svg id="ctrlPlaySvg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+            <button class="ctrl-btn" id="ctrlRestartBtn" title="Restart">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+            </button>
+            <span class="time-display" id="timeDisplay">00:00 / 00:33</span>
+          </div>
+
+          <!-- Progress Scrubber Bar -->
+          <div class="timeline-bar" id="timelineBar">
+            <div class="timeline-progress" id="timelineProgress"></div>
+          </div>
+
+          <div class="controls-right">
+            <button class="ctrl-btn" id="ctrlMuteBtn" title="Mute / Unmute">
+              <svg id="volumeSvg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            </button>
+            <!-- Chapter jump pills -->
+            <div class="chapter-pills">
+              <button class="chap-pill active" data-time="0">1. Intro</button>
+              <button class="chap-pill" data-time="7">2. Tasks</button>
+              <button class="chap-pill" data-time="15">3. SAM 2</button>
+              <button class="chap-pill" data-time="23">4. QA</button>
+              <button class="chap-pill" data-time="30">5. Pilot</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden Native Audio Source -->
+        <audio id="explainerAudio" src="/proofs/explainer_voice.mp3" preload="metadata"></audio>
       </div>
     </section>
 
@@ -410,6 +656,9 @@
 
         <!-- The Comparison Box -->
         <div class="comparison-box" id="comparisonBox">
+          <!-- Laser Scanline Motion Graphic -->
+          <div class="laser-scanline"></div>
+
           <!-- Segmented Layer (Full underneath) -->
           <div class="comparison-layer segmented">
             <img src="/proofs/scene_segmented.svg" alt="Segmented Multiclass Mask" style="width:100%;height:100%;object-fit:cover;">
