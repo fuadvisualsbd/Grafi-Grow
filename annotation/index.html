@@ -372,73 +372,189 @@
 
         <!-- Video Canvas / Visual Stage -->
         <div class="motion-stage" id="motionStage">
-          <!-- Ambient Grid & Soundwave Overlay -->
-          <div class="stage-grid"></div>
+          <!-- Ambient Soundwave Visualizer -->
           <div class="stage-soundwave" id="stageSoundwave">
             <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
             <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
           </div>
 
-          <!-- Scene 1: Agency Brand Intro -->
-          <div class="motion-scene active" id="scene1">
-            <div class="scene-badge">CHAPTER 01 / 05 • AGENCY OVERVIEW</div>
-            <div class="scene-icon-wrap">
-              <img src="/logo.svg" alt="GrafiGrow Vision" class="scene-hero-logo">
+          <!-- Interactive Simulated CV Studio Canvas -->
+          <div class="sim-studio-canvas" id="simStudioCanvas">
+            <!-- Interactive Mode Pill -->
+            <div class="sim-interactive-badge" id="simModeBadge">
+              <span class="dot"></span>
+              <span id="simModeText">AUTOPILOT DEMO • CLICK ANY OBJECT TO INTERACT</span>
             </div>
-            <h3 class="scene-title">GrafiGrow <span class="gradient-text">AI Vision Lab</span></h3>
-            <p class="scene-desc">Enterprise Computer Vision Data Annotation &amp; High-Precision Segmentation Agency.</p>
-            <div class="scene-metric-pill">Trusted by ML Teams Worldwide • 99.8% Accuracy SLA</div>
-          </div>
 
-          <!-- Scene 2: Core Segmentation -->
-          <div class="motion-scene" id="scene2">
-            <div class="scene-badge">CHAPTER 02 / 05 • SEGMENTATION SUITE</div>
-            <div class="scene-graphic-grid">
-              <div class="gfx-item"><span class="gfx-icon">🗺️</span><strong>Semantic Masks</strong><small>Per-Pixel Cityscapes</small></div>
-              <div class="gfx-item"><span class="gfx-icon">📐</span><strong>Instance Polygons</strong><small>Sub-pixel Overlap IDs</small></div>
-              <div class="gfx-item"><span class="gfx-icon">🎬</span><strong>Video Object Tracking</strong><small>VOS &amp; Temporal Continuity</small></div>
-              <div class="gfx-item"><span class="gfx-icon">📡</span><strong>3D LiDAR Point Cloud</strong><small>3D Sensor Fusion</small></div>
-            </div>
-          </div>
-
-          <!-- Scene 3: SAM 2 & CVAT Tooling -->
-          <div class="motion-scene" id="scene3">
-            <div class="scene-badge">CHAPTER 03 / 05 • MODEL-ASSISTED SPEED</div>
-            <div class="scene-radar-box">
-              <div class="radar-scan"></div>
-              <h4 style="font-size:1.2rem; margin-bottom:6px;">Meta SAM 2 + CVAT Engine</h4>
-              <p style="font-size:0.86rem; color:var(--text-secondary); margin-bottom:12px;">Real-time promptable video propagation with human-in-the-loop micro-refinement.</p>
-              <div class="scene-tags">
-                <span class="tech-chip">Auto-Next Queuing</span>
-                <span class="tech-chip">Trajectory Persistence</span>
-                <span class="tech-chip">Sub-Pixel Bezier</span>
+            <!-- Top Studio Toolbar HUD -->
+            <div class="sim-topbar">
+              <div class="sim-topbar-left">
+                <div class="sim-live-chip">SAM 2.1 ONLINE</div>
+                <div class="sim-tools-ribbon">
+                  <button class="sim-tool-btn" id="simToolWand"><span>🪄</span> Smart Wand</button>
+                  <button class="sim-tool-btn active" id="simToolPoly"><span>📐</span> Polygon Lasso</button>
+                  <button class="sim-tool-btn" id="simToolTrack"><span>🎬</span> VOS Tracker</button>
+                  <button class="sim-tool-btn" id="simToolQA"><span>🔍</span> QA Inspector</button>
+                </div>
+              </div>
+              <div class="sim-topbar-right">
+                <span class="sim-stat-chip">Precision: <strong id="simStatIou" style="color:#00f5ff;">99.92% IoU</strong></span>
+                <span class="sim-stat-chip">Sub-pixel: <strong style="color:#4ade80;">0.05px</strong></span>
+                <span class="sim-stat-chip">FPS: <strong style="color:#ffd166;">60</strong></span>
               </div>
             </div>
-          </div>
 
-          <!-- Scene 4: 4-Tier QA & Security -->
-          <div class="motion-scene" id="scene4">
-            <div class="scene-badge">CHAPTER 04 / 05 • QUALITY &amp; COMPLIANCE</div>
-            <div class="scene-qa-flow">
-              <div class="qa-flow-node"><span>1</span> AI Pre-Label</div>
-              <div class="qa-arrow">→</div>
-              <div class="qa-flow-node"><span>2</span> Human Refine</div>
-              <div class="qa-arrow">→</div>
-              <div class="qa-flow-node"><span>3</span> Python Linter</div>
-              <div class="qa-arrow">→</div>
-              <div class="qa-flow-node active"><span>4</span> 98.5%+ IoU Consensus</div>
+            <!-- Central Viewport -->
+            <div class="sim-viewport" id="simViewport">
+              <!-- Perspective Road Floor & Horizon -->
+              <div class="sim-grid-floor"></div>
+              <div class="sim-horizon-glow"></div>
+
+              <!-- Motion Trajectory Stream for VOS -->
+              <div class="sim-trajectory" id="simTrajectory"></div>
+
+              <!-- Interactive Object 1: Autonomous Sedan -->
+              <div class="sim-obj sim-car-1" id="simCar1" data-obj="sedan">
+                <!-- Target Reticle -->
+                <div class="sim-reticle"></div>
+                <!-- Dynamic Tooltip -->
+                <div class="sim-obj-tooltip" id="simCar1Tooltip">
+                  <span>🎯 Sedan #04 • Class: Vehicle [SAM-2 Active]</span>
+                </div>
+                <!-- Car SVG Artwork -->
+                <svg class="sim-car-svg" viewBox="0 0 260 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Wheels -->
+                  <circle cx="55" cy="95" r="20" class="sim-car-wheels"/>
+                  <circle cx="55" cy="95" r="11" fill="#151926"/>
+                  <circle cx="205" cy="95" r="20" class="sim-car-wheels"/>
+                  <circle cx="205" cy="95" r="11" fill="#151926"/>
+                  <!-- Main Body Contour -->
+                  <path d="M20 90 L35 65 L70 55 L115 32 L175 32 L215 52 L245 68 L250 88 L230 92 L180 92 L80 92 Z" class="sim-car-body"/>
+                  <!-- Cabin & Windows -->
+                  <path d="M118 36 L170 36 L202 54 L120 54 Z" class="sim-car-windows"/>
+                  <path d="M82 54 L114 36 L114 54 Z" class="sim-car-windows"/>
+                  <!-- Headlight / Taillight Glow -->
+                  <polygon points="245,70 255,75 248,82" class="sim-headlights"/>
+                  <polygon points="22,72 18,72 18,80 22,80" fill="#ff3366"/>
+                </svg>
+                <!-- Segmented Polygon Overlay Mask -->
+                <div class="sim-polygon-mask" id="simCar1Mask">
+                  <svg class="sim-car-svg" viewBox="0 0 260 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="18,92 32,63 68,53 113,30 177,30 217,50 248,66 252,90 228,94 182,94 78,94" class="sim-mask-poly"/>
+                  </svg>
+                  <!-- 8 Vertex Nodes -->
+                  <span class="sim-vertex" style="left:18px; top:92px;"></span>
+                  <span class="sim-vertex" style="left:32px; top:63px;"></span>
+                  <span class="sim-vertex" style="left:68px; top:53px;"></span>
+                  <span class="sim-vertex" style="left:113px; top:30px;"></span>
+                  <span class="sim-vertex" style="left:177px; top:30px;"></span>
+                  <span class="sim-vertex" style="left:217px; top:50px;"></span>
+                  <span class="sim-vertex" style="left:248px; top:66px;"></span>
+                  <span class="sim-vertex" style="left:252px; top:90px;"></span>
+                </div>
+              </div>
+
+              <!-- Interactive Object 2: Van in Adjacent Lane -->
+              <div class="sim-obj sim-car-2" id="simCar2" data-obj="van">
+                <div class="sim-reticle"></div>
+                <div class="sim-obj-tooltip"><span>🚚 Delivery Van #12 • Occlusion: 12%</span></div>
+                <svg class="sim-car-svg" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="45" cy="80" r="15" class="sim-car-wheels"/>
+                  <circle cx="155" cy="80" r="15" class="sim-car-wheels"/>
+                  <path d="M20 78 L25 40 L60 30 L180 30 L185 78 Z" class="sim-car-body" style="stroke:rgba(168,85,247,0.5);"/>
+                  <path d="M30 42 L58 35 L58 55 L30 55 Z" class="sim-car-windows"/>
+                </svg>
+              </div>
+
+              <!-- Interactive Object 3: Pedestrian on Sidewalk -->
+              <div class="sim-obj sim-pedestrian" id="simPedestrian" data-obj="pedestrian">
+                <div class="sim-reticle"></div>
+                <div class="sim-obj-tooltip"><span>🚶 Pedestrian #03 • Keypoints: 17</span></div>
+                <svg viewBox="0 0 50 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
+                  <rect x="4" y="4" width="42" height="82" rx="4" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4 2" fill="rgba(249,115,22,0.15)"/>
+                  <circle cx="25" cy="18" r="8" fill="#f97316"/>
+                  <line x1="25" y1="26" x2="25" y2="55" stroke="#f97316" stroke-width="2.5"/>
+                  <line x1="12" y1="35" x2="38" y2="35" stroke="#f97316" stroke-width="2"/>
+                  <line x1="25" y1="55" x2="15" y2="82" stroke="#f97316" stroke-width="2.5"/>
+                  <line x1="25" y1="55" x2="35" y2="82" stroke="#f97316" stroke-width="2.5"/>
+                </svg>
+              </div>
+
+              <!-- Scene 4 Overlay: Verified Daily Production Audit Ledger -->
+              <div class="sim-ledger-overlay" id="simLedgerOverlay">
+                <div class="sim-ledger-card">
+                  <div class="sim-ledger-title">
+                    <span>📋 Verified Daily Production Audit Logs</span>
+                    <span class="sim-ledger-badge">100% QA AUDIT PASSED</span>
+                  </div>
+                  <div class="sim-ledger-row hovered" id="simLedgerRow1">
+                    <div class="sim-ledger-row-text">
+                      <strong>Batch #1042 • 4,280 Semantic Frames (Medical AI)</strong>
+                      <small>99.92% IoU Accuracy • Dual-Tier Engineer Consensus</small>
+                    </div>
+                    <span class="sim-ledger-badge" style="background:rgba(0,229,255,0.2); color:#00f5ff; border-color:#00f5ff;">VERIFIED ✓</span>
+                  </div>
+                  <div class="sim-ledger-row" id="simLedgerRow2">
+                    <div class="sim-ledger-row-text">
+                      <strong>Batch #1043 • 250min Drone VOS Temporal Tracking</strong>
+                      <small>Zero-drift keyframe propagation • 60 FPS verified</small>
+                    </div>
+                    <span class="sim-ledger-badge">LOCKED ✓</span>
+                  </div>
+                  <div class="sim-ledger-row" id="simLedgerRow3">
+                    <div class="sim-ledger-row-text">
+                      <strong>Batch #1044 • Daily Production Screen Recording</strong>
+                      <small>4K CVAT Workflow capture • Full transparency audit</small>
+                    </div>
+                    <span class="sim-ledger-badge" style="background:rgba(193,39,45,0.2); color:#ff6b6b; border-color:#ff6b6b;">RECORDED 🎥</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Scene 5 Overlay: Direct WhatsApp Conversion Pilot -->
+              <div class="sim-whatsapp-overlay" id="simWhatsappOverlay">
+                <div class="sim-whatsapp-box">
+                  <div class="sim-whatsapp-avatar">
+                    <svg width="30" height="30" fill="#fff" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.072-2.123-.521-1.624-.674-2.656-2.316-2.737-2.424-.08-.108-.663-.881-.663-1.682 0-.8.421-1.193.57-1.353.149-.161.326-.201.435-.201.109 0 .217.001.312.006.1.005.234-.038.366.279.135.327.461 1.124.502 1.206.04.081.067.176.014.283-.054.108-.081.175-.162.27-.081.095-.17.212-.243.285-.081.082-.166.171-.071.334.095.162.421.696.904 1.127.621.554 1.144.726 1.307.807.162.081.257.068.351-.04.095-.109.407-.474.516-.636.108-.162.217-.136.365-.081.149.054.949.447 1.112.529.163.081.272.122.312.189.041.068.041.393-.103.798z"/></svg>
+                  </div>
+                  <h4 style="font-size:1.25rem; font-weight:700; color:#fff; margin-bottom:6px;">Fuad Visuals • Lead CV Engineer</h4>
+                  <p style="font-size:0.86rem; color:#4ade80; margin-bottom:12px;">● Online Now • Ready to Launch Your Custom Pilot</p>
+                  <p style="font-size:0.84rem; color:var(--text-secondary); max-width:380px; margin:0 auto 16px;">Claim a <strong>free 50-image calibration batch</strong> within 24 hours with full IoU metric reports and custom annotation rules.</p>
+                  <a href="https://wa.me/8801952767958?text=Hi%20Fuad%2C%20I%20watched%20the%20interactive%20video%20walkthrough%20and%20want%20to%20start%20our%20free%2050-image%20pilot%20batch." target="_blank" rel="noopener noreferrer" class="sim-whatsapp-btn" id="simWhatsappBtn">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.072-2.123-.521-1.624-.674-2.656-2.316-2.737-2.424-.08-.108-.663-.881-.663-1.682 0-.8.421-1.193.57-1.353.149-.161.326-.201.435-.201.109 0 .217.001.312.006.1.005.234-.038.366.279.135.327.461 1.124.502 1.206.04.081.067.176.014.283-.054.108-.081.175-.162.27-.081.095-.17.212-.243.285-.081.082-.166.171-.071.334.095.162.421.696.904 1.127.621.554 1.144.726 1.307.807.162.081.257.068.351-.04.095-.109.407-.474.516-.636.108-.162.217-.136.365-.081.149.054.949.447 1.112.529.163.081.272.122.312.189.041.068.041.393-.103.798z"/></svg>
+                    <span>Start Free Pilot on WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- THE VIRTUAL ANIMATED POINTER CURSOR -->
+              <div class="sim-virtual-cursor" id="simVirtualCursor">
+                <!-- SVG Cursor Arrow -->
+                <svg class="sim-cursor-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 3 L20 11 L12 13 L8 21 Z" fill="url(#cursorGradient)" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round"/>
+                  <defs>
+                    <linearGradient id="cursorGradient" x1="4" y1="3" x2="20" y2="21" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#00f5ff"/>
+                      <stop offset="1" stop-color="#c1272d"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <!-- Click Shockwave Ring -->
+                <div class="sim-cursor-click-ring" id="simCursorClickRing"></div>
+                <!-- Dynamic Action Label Pill -->
+                <div class="sim-cursor-pill" id="simCursorPill">Hovering Vehicle...</div>
+              </div>
             </div>
-            <p style="margin-top:16px; font-size:0.85rem; color:#4ade80;">🔒 100% Air-Gapped Workstations • Zero Persistent Cloud Storage • Bilateral NDA</p>
-          </div>
 
-          <!-- Scene 5: Claim Free Pilot -->
-          <div class="motion-scene" id="scene5">
-            <div class="scene-badge">CHAPTER 05 / 05 • LAUNCH YOUR PILOT</div>
-            <h3 style="font-size:1.6rem; margin-bottom:10px;">Claim Free 50-Image Sample Batch</h3>
-            <p style="color:var(--text-secondary); max-width:480px; margin:0 auto 20px;">Delivered within 24 hours with full IoU metric reports and custom format calibration.</p>
-            <a href="https://wa.me/8801952767958?text=Hi%20GrafiGrow%2C%20I%20just%20watched%20your%20explainer%20video%20and%20want%20to%20claim%20our%20free%2050-image%20pilot%20batch." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-hero" style="font-size:0.95rem; padding:12px 28px;">
-              <span>Claim Free Pilot on WhatsApp</span>
-            </a>
+            <!-- Bottom Simulation Timeline Bar -->
+            <div class="sim-timeline-bar">
+              <div class="sim-frame-counter" id="simFrameCounter">FRAME: 01 / 48</div>
+              <div class="sim-track" id="simTrack">
+                <div class="sim-track-progress" id="simTrackProgress"></div>
+                <div class="sim-playhead" id="simPlayhead"></div>
+              </div>
+              <span class="sim-stat-chip">TIMECODE: <strong id="simTimecode" style="color:#00f5ff;">00:01.24</strong></span>
+            </div>
           </div>
 
           <!-- Big Play / Pause Overlay Button (Center of Stage) -->
@@ -449,8 +565,7 @@
             <span class="play-pulse-ring"></span>
           </button>
         </div>
-
-        <!-- Synchronized Kinetic Captions Bar -->
+<!-- Synchronized Kinetic Captions Bar -->
         <div class="kinetic-caption-bar" id="captionBar">
           <span class="caption-speaker">NARRATOR:</span>
           <span class="caption-text" id="captionText">Click play to watch our 35-second motion graphics agency explainer with voiceover.</span>
@@ -479,11 +594,11 @@
             </button>
             <!-- Chapter jump pills -->
             <div class="chapter-pills">
-              <button class="chap-pill active" data-time="0">1. Intro</button>
-              <button class="chap-pill" data-time="7">2. Tasks</button>
-              <button class="chap-pill" data-time="15">3. SAM 2</button>
-              <button class="chap-pill" data-time="23">4. QA</button>
-              <button class="chap-pill" data-time="30">5. Pilot</button>
+              <button class="chap-pill active" data-start="0" data-time="0">1. Overview</button>
+              <button class="chap-pill" data-start="7.2" data-time="7.2">2. Segmentation</button>
+              <button class="chap-pill" data-start="20.1" data-time="20.1">3. VOS Tracking</button>
+              <button class="chap-pill" data-start="29.8" data-time="29.8">4. Daily Proofs</button>
+              <button class="chap-pill" data-start="39.3" data-time="39.3">5. WhatsApp Pilot</button>
             </div>
           </div>
         </div>

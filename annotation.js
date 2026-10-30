@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 5. MOTION GRAPHICS EXPLAINER VIDEO PLAYER (STUDIO TTS + STAGE SYNC)
+  // 5. MOTION GRAPHICS EXPLAINER VIDEO PLAYER (STUDIO TTS + INTERACTIVE SIMULATION)
   // =========================================================================
   const audio = document.getElementById('explainerAudio');
   const playerContainer = document.querySelector('.motion-player-container');
@@ -345,21 +345,62 @@ document.addEventListener('DOMContentLoaded', () => {
   const captionText = document.getElementById('captionText');
   const stageSoundwave = document.getElementById('stageSoundwave');
   const chapPills = document.querySelectorAll('.chap-pill');
-  const scenes = [
-    document.getElementById('scene1'),
-    document.getElementById('scene2'),
-    document.getElementById('scene3'),
-    document.getElementById('scene4'),
-    document.getElementById('scene5')
-  ];
+
+  // Simulation Studio Elements
+  const simStudioCanvas = document.getElementById('simStudioCanvas');
+  const simModeBadge = document.getElementById('simModeBadge');
+  const simModeText = document.getElementById('simModeText');
+  const simVirtualCursor = document.getElementById('simVirtualCursor');
+  const simCursorPill = document.getElementById('simCursorPill');
+  const simCursorClickRing = document.getElementById('simCursorClickRing');
+  const simCar1 = document.getElementById('simCar1');
+  const simCar1Tooltip = document.getElementById('simCar1Tooltip');
+  const simCar2 = document.getElementById('simCar2');
+  const simPedestrian = document.getElementById('simPedestrian');
+  const simTrajectory = document.getElementById('simTrajectory');
+  const simLedgerOverlay = document.getElementById('simLedgerOverlay');
+  const simLedgerRow1 = document.getElementById('simLedgerRow1');
+  const simLedgerRow2 = document.getElementById('simLedgerRow2');
+  const simLedgerRow3 = document.getElementById('simLedgerRow3');
+  const simWhatsappOverlay = document.getElementById('simWhatsappOverlay');
+  const simWhatsappBtn = document.getElementById('simWhatsappBtn');
+  const simFrameCounter = document.getElementById('simFrameCounter');
+  const simTrackProgress = document.getElementById('simTrackProgress');
+  const simPlayhead = document.getElementById('simPlayhead');
+  const simTimecode = document.getElementById('simTimecode');
 
   const videoSubtitles = [
-    { start: 0, end: 7.5, scene: 0, text: 'Welcome to GrafiGrow AI Vision Lab. We are an enterprise data annotation and computer vision agency trusted worldwide.' },
-    { start: 7.5, end: 15.5, scene: 1, text: 'We specialize in high-precision image & video segmentation: from semantic masks to real-time tracking with SAM 2 and CVAT.' },
-    { start: 15.5, end: 23.5, scene: 2, text: 'Whether you need polygon labeling for autonomous driving, robotics pick-and-place, or dental AI, we deliver with 99.8% pixel accuracy.' },
-    { start: 23.5, end: 30.5, scene: 3, text: 'Every dataset undergoes a 4-tier human-in-the-loop QA check, exported in COCO, YOLO, or custom schemas under strict NDA security.' },
-    { start: 30.5, end: 40.0, scene: 4, text: 'Ready to scale your models? Chat with our lead engineer on WhatsApp today and claim your free 50-image pilot sample batch!' }
+    { start: 0.00, end: 7.20, scene: 0, text: "Hey there! Welcome to GrafiGrow. Let me show you how our high-precision annotation engine works in real time." },
+    { start: 7.20, end: 20.10, scene: 1, text: "Look right here at our workspace. As our pointer hovers over this vehicle, watch the edge detection light up! One click, and boom: pixel-perfect polygon segmentation mask with sub-pixel IoU precision." },
+    { start: 20.10, end: 29.80, scene: 2, text: "Now watch video temporal tracking across consecutive frames. Notice how the mask locks onto dynamic motion with zero drift and zero jitter." },
+    { start: 29.80, end: 39.30, scene: 3, text: "Every single day, we log our verified production metrics, screen recordings, and QA audits right here on this portal for complete transparency." },
+    { start: 39.30, end: 47.16, scene: 4, text: "Ready to accelerate your model training? Click the WhatsApp button right here, and let us launch your free custom pilot today!" }
   ];
+
+  // Keyframes for Virtual Animated Cursor (x%, y%)
+  const cursorKeyframes = [
+    { t: 0.0, x: 82, y: 78, pill: "Studio Autopilot" },
+    { t: 2.2, x: 22, y: 12, pill: "Select Smart Wand" },
+    { t: 4.8, x: 74, y: 12, pill: "IoU 99.92% Calibrated" },
+    { t: 7.2, x: 38, y: 44, pill: "Targeting Vehicle #04" },
+    { t: 9.2, x: 45, y: 48, pill: "Edge Detection Active", hoverCar1: true },
+    { t: 12.5, x: 45, y: 48, pill: "Polygon Mask Snapped!", click: true, maskCar1: true },
+    { t: 15.5, x: 52, y: 42, pill: "Contour Verification" },
+    { t: 18.0, x: 42, y: 54, pill: "Sub-pixel Verified" },
+    { t: 20.1, x: 25, y: 90, pill: "VOS Scrubber Handle" },
+    { t: 22.2, x: 25, y: 90, pill: "Tracking Frames...", click: true },
+    { t: 27.5, x: 75, y: 90, pill: "Zero-Drift Motion Vectors" },
+    { t: 29.8, x: 50, y: 38, pill: "Auditing Batch #1042", ledger: true, row1: true },
+    { t: 34.5, x: 50, y: 64, pill: "Daily Screen Recording", ledger: true, row3: true },
+    { t: 39.3, x: 50, y: 70, pill: "Connecting WhatsApp...", whatsapp: true },
+    { t: 42.8, x: 50, y: 74, pill: "Direct WhatsApp Line", whatsapp: true, hoverBtn: true },
+    { t: 44.2, x: 50, y: 74, pill: "Free Pilot Claimed!", click: true, whatsapp: true, hoverBtn: true },
+    { t: 47.16, x: 50, y: 74, pill: "Ready for Pilot", whatsapp: true }
+  ];
+
+  let lastClickedTime = -1;
+  let isUserInteracting = false;
+  let userInteractTimeout = null;
 
   function formatTime(sec) {
     const m = Math.floor(sec / 60);
@@ -367,16 +408,196 @@ document.addEventListener('DOMContentLoaded', () => {
     return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
   }
 
-  function togglePlayAudio() {
-    if (!audio) return;
-    if (audio.paused) {
-      audio.play().then(() => {
-        updatePlayIcons(true);
-      }).catch(err => console.log('Playback error:', err));
-    } else {
-      audio.pause();
-      updatePlayIcons(false);
+  function triggerCursorClickEffect() {
+    if (!simVirtualCursor) return;
+    simVirtualCursor.classList.remove('clicked');
+    void simVirtualCursor.offsetWidth; // trigger reflow
+    simVirtualCursor.classList.add('clicked');
+    setTimeout(() => {
+      if (simVirtualCursor) simVirtualCursor.classList.remove('clicked');
+    }, 600);
+  }
+
+  // Smooth Interpolation of Virtual Cursor Coordinates
+  function updateVirtualCursor(cur) {
+    if (!simVirtualCursor || isUserInteracting) return;
+
+    let k1 = cursorKeyframes[0];
+    let k2 = cursorKeyframes[cursorKeyframes.length - 1];
+
+    for (let i = 0; i < cursorKeyframes.length - 1; i++) {
+      if (cur >= cursorKeyframes[i].t && cur <= cursorKeyframes[i + 1].t) {
+        k1 = cursorKeyframes[i];
+        k2 = cursorKeyframes[i + 1];
+        break;
+      }
     }
+
+    const duration = k2.t - k1.t || 0.001;
+    const factor = Math.min(1, Math.max(0, (cur - k1.t) / duration));
+    // Smooth easeInOut
+    const ease = factor < 0.5 ? 2 * factor * factor : -1 + (4 - 2 * factor) * factor;
+
+    const currentX = k1.x + (k2.x - k1.x) * ease;
+    const currentY = k1.y + (k2.y - k1.y) * ease;
+
+    simVirtualCursor.style.transform = `translate3d(${currentX}%, ${currentY}%, 0)`;
+
+    if (simCursorPill && k2.pill) {
+      simCursorPill.textContent = k2.pill;
+    }
+
+    // Check for click triggers
+    if (k2.click && Math.abs(cur - k2.t) < 0.25 && lastClickedTime !== k2.t) {
+      lastClickedTime = k2.t;
+      triggerCursorClickEffect();
+    }
+  }
+
+  // Update Studio Workspace States According to Audio Timeline
+  function updateSimulationStudio(cur) {
+    if (!simStudioCanvas) return;
+
+    updateVirtualCursor(cur);
+
+    // Timecode Display
+    if (simTimecode) {
+      const minutes = Math.floor(cur / 60);
+      const seconds = (cur % 60).toFixed(2);
+      simTimecode.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(5, '0')}`;
+    }
+
+    // Scene 1: 0 - 7.20s (Brand & Intro)
+    if (cur < 7.20) {
+      if (simCar1) {
+        simCar1.classList.remove('hovered', 'segmented', 'tracked-forward');
+      }
+      if (simTrajectory) simTrajectory.classList.remove('active');
+      if (simLedgerOverlay) simLedgerOverlay.classList.remove('active');
+      if (simWhatsappOverlay) simWhatsappOverlay.classList.remove('active');
+      if (simTrackProgress) simTrackProgress.style.width = '15%';
+      if (simPlayhead) simPlayhead.style.left = '15%';
+      if (simFrameCounter) simFrameCounter.textContent = 'FRAME: 01 / 48';
+    }
+
+    // Scene 2: 7.20s - 20.10s (Interactive Vehicle Hover & Polygon Snap)
+    else if (cur >= 7.20 && cur < 20.10) {
+      if (simLedgerOverlay) simLedgerOverlay.classList.remove('active');
+      if (simWhatsappOverlay) simWhatsappOverlay.classList.remove('active');
+      if (simTrajectory) simTrajectory.classList.remove('active');
+      if (simCar1) {
+        simCar1.classList.remove('tracked-forward');
+        // Hover Car 1
+        if (cur >= 9.0) {
+          simCar1.classList.add('hovered');
+        } else {
+          simCar1.classList.remove('hovered');
+        }
+        // Segment Mask Car 1
+        if (cur >= 12.5) {
+          simCar1.classList.add('segmented');
+          if (simCar1Tooltip) {
+            simCar1Tooltip.innerHTML = '<span>✓ Sedan #04 • Segmented (99.92% IoU)</span>';
+          }
+        } else {
+          simCar1.classList.remove('segmented');
+          if (simCar1Tooltip) {
+            simCar1Tooltip.innerHTML = '<span>🎯 Sedan #04 • Class: Vehicle [SAM-2 Active]</span>';
+          }
+        }
+      }
+    }
+
+    // Scene 3: 20.10s - 29.80s (Temporal VOS Video Tracking)
+    else if (cur >= 20.10 && cur < 29.80) {
+      if (simLedgerOverlay) simLedgerOverlay.classList.remove('active');
+      if (simWhatsappOverlay) simWhatsappOverlay.classList.remove('active');
+      if (simCar1) {
+        simCar1.classList.add('hovered', 'segmented');
+      }
+      if (simTrajectory) simTrajectory.classList.add('active');
+
+      // Drag scrubber from 22.0s to 28.0s
+      const scrubFactor = Math.min(1, Math.max(0, (cur - 22.0) / 6.0));
+      const targetPercent = 25 + scrubFactor * 55;
+      if (simTrackProgress) simTrackProgress.style.width = `${targetPercent}%`;
+      if (simPlayhead) simPlayhead.style.left = `${targetPercent}%`;
+
+      const frameNumber = Math.min(48, Math.max(1, Math.floor(1 + scrubFactor * 47)));
+      if (simFrameCounter) simFrameCounter.textContent = `FRAME: ${String(frameNumber).padStart(2, '0')} / 48`;
+
+      // Smoothly advance car along trajectory
+      if (simCar1) {
+        if (scrubFactor > 0.15) {
+          simCar1.classList.add('tracked-forward');
+        } else {
+          simCar1.classList.remove('tracked-forward');
+        }
+      }
+    }
+
+    // Scene 4: 29.80s - 39.30s (Daily Production Audit Ledger)
+    else if (cur >= 29.80 && cur < 39.30) {
+      if (simTrajectory) simTrajectory.classList.remove('active');
+      if (simWhatsappOverlay) simWhatsappOverlay.classList.remove('active');
+      if (simLedgerOverlay) simLedgerOverlay.classList.add('active');
+
+      if (cur < 34.0) {
+        if (simLedgerRow1) simLedgerRow1.classList.add('hovered');
+        if (simLedgerRow3) simLedgerRow3.classList.remove('hovered');
+      } else {
+        if (simLedgerRow1) simLedgerRow1.classList.remove('hovered');
+        if (simLedgerRow3) simLedgerRow3.classList.add('hovered');
+      }
+    }
+
+    // Scene 5: 39.30s - 47.16s (Direct WhatsApp Conversion Pilot)
+    else if (cur >= 39.30) {
+      if (simLedgerOverlay) simLedgerOverlay.classList.remove('active');
+      if (simWhatsappOverlay) simWhatsappOverlay.classList.add('active');
+
+      if (cur >= 42.5) {
+        if (simWhatsappBtn) simWhatsappBtn.classList.add('hovered');
+      } else {
+        if (simWhatsappBtn) simWhatsappBtn.classList.remove('hovered');
+      }
+    }
+  }
+
+  // User Interactive Mode Handler
+  function handleUserControl() {
+    isUserInteracting = true;
+    if (simModeText) {
+      simModeText.textContent = "🕹️ INTERACTIVE MODE • YOU ARE IN CONTROL";
+    }
+    if (simVirtualCursor) {
+      simVirtualCursor.style.opacity = "0.3";
+    }
+
+    clearTimeout(userInteractTimeout);
+    userInteractTimeout = setTimeout(() => {
+      isUserInteracting = false;
+      if (simModeText) {
+        simModeText.textContent = "AUTOPILOT DEMO • CLICK ANY OBJECT TO INTERACT";
+      }
+      if (simVirtualCursor) {
+        simVirtualCursor.style.opacity = "1";
+      }
+    }, 4000);
+  }
+
+  if (simStudioCanvas) {
+    simStudioCanvas.addEventListener('mousemove', handleUserControl);
+    simStudioCanvas.addEventListener('touchstart', handleUserControl, { passive: true });
+  }
+
+  // Interactive toggle on Car 1 click
+  if (simCar1) {
+    simCar1.addEventListener('click', (e) => {
+      e.stopPropagation();
+      simCar1.classList.toggle('segmented');
+      handleUserControl();
+    });
   }
 
   function updatePlayIcons(isPlaying) {
@@ -396,46 +617,85 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function togglePlayAudio() {
+    if (!audio) return;
+    if (audio.paused) {
+      audio.play().then(() => {
+        updatePlayIcons(true);
+      }).catch(err => {
+        console.warn('Playback blocked or pending interaction:', err);
+      });
+    } else {
+      audio.pause();
+      updatePlayIcons(false);
+    }
+  }
+
   if (stagePlayTrigger) stagePlayTrigger.addEventListener('click', togglePlayAudio);
   if (ctrlPlayBtn) ctrlPlayBtn.addEventListener('click', togglePlayAudio);
 
-  if (ctrlRestartBtn && audio) {
+  if (ctrlRestartBtn) {
     ctrlRestartBtn.addEventListener('click', () => {
+      if (!audio) return;
       audio.currentTime = 0;
-      audio.play();
-      updatePlayIcons(true);
+      audio.play().then(() => updatePlayIcons(true));
     });
   }
 
-  if (ctrlMuteBtn && audio) {
+  if (ctrlMuteBtn) {
     ctrlMuteBtn.addEventListener('click', () => {
+      if (!audio) return;
       audio.muted = !audio.muted;
-      ctrlMuteBtn.style.opacity = audio.muted ? '0.4' : '1';
+      ctrlMuteBtn.style.opacity = audio.muted ? '0.45' : '1';
     });
   }
+
+  if (timelineBar) {
+    timelineBar.addEventListener('click', (e) => {
+      if (!audio || !audio.duration) return;
+      const rect = timelineBar.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const percent = Math.max(0, Math.min(1, clickX / rect.width));
+      audio.currentTime = percent * audio.duration;
+    });
+  }
+
+  chapPills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      if (!audio) return;
+      const startSec = parseFloat(pill.getAttribute('data-start') || '0');
+      audio.currentTime = startSec;
+      if (audio.paused) audio.play().then(() => updatePlayIcons(true));
+    });
+  });
 
   if (audio) {
+    audio.addEventListener('loadedmetadata', () => {
+      if (timeDisplay) timeDisplay.textContent = `00:00 / ${formatTime(audio.duration || 47)}`;
+    });
+
     audio.addEventListener('timeupdate', () => {
       const cur = audio.currentTime;
-      const dur = audio.duration || 33.5;
-      const pct = (cur / dur) * 100;
+      const dur = audio.duration || 47.16;
 
-      if (timelineProgress) timelineProgress.style.width = `${pct}%`;
-      if (timeDisplay) timeDisplay.textContent = `${formatTime(cur)} / ${formatTime(dur)}`;
+      if (timeDisplay) {
+        timeDisplay.textContent = `${formatTime(cur)} / ${formatTime(dur)}`;
+      }
 
-      // Synchronize scene and subtitle
+      if (timelineProgress && dur > 0) {
+        timelineProgress.style.width = `${(cur / dur) * 100}%`;
+      }
+
+      // Synchronize simulated CV workspace & pointer
+      updateSimulationStudio(cur);
+
+      // Synchronize dynamic subtitle cues
       const activeCue = videoSubtitles.find(cue => cur >= cue.start && cur < cue.end);
       if (activeCue) {
         if (captionText && captionText.textContent !== activeCue.text) {
           captionText.textContent = activeCue.text;
         }
 
-        // Switch active scene visual
-        scenes.forEach((sc, idx) => {
-          if (sc) sc.classList.toggle('active', idx === activeCue.scene);
-        });
-
-        // Switch active chapter pill
         chapPills.forEach((pill, idx) => {
           pill.classList.toggle('active', idx === activeCue.scene);
         });
@@ -444,31 +704,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     audio.addEventListener('ended', () => {
       updatePlayIcons(false);
-      if (timelineProgress) timelineProgress.style.width = '100%';
+      if (captionText) captionText.textContent = "Finished! Click restart or jump to any chapter.";
     });
   }
 
-  // Scrubber click seek
-  if (timelineBar && audio) {
-    timelineBar.addEventListener('click', e => {
-      const rect = timelineBar.getBoundingClientRect();
-      const pos = (e.clientX - rect.left) / rect.width;
-      audio.currentTime = pos * (audio.duration || 33.5);
-    });
-  }
-
-  // Chapter Jump Pills
-  chapPills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      const targetTime = parseFloat(pill.getAttribute('data-time'));
-      if (audio) {
-        audio.currentTime = targetTime;
-        if (audio.paused) togglePlayAudio();
-      }
-    });
-  });
-
-  // =========================================================================
   // 6. KINETIC TYPOGRAPHY: ROTATING HEADLINE
   // =========================================================================
   const kineticWords = [
