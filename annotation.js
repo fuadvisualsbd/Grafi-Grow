@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tool: 'EgoScale • CVAT Cloud Core',
       accuracy: '99.8% QA Pass',
       instances: '4,850 video segments',
-      imageSrc: '/proofs/real_proof_1.png'
+      imageSrc: '/proofs/proof_benchmark_autonomous.png'
     },
     {
       id: 'proof-v3',
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tool: 'CVAT • Multi-Class Polygon',
       accuracy: '99.5% Consistency',
       instances: '3,200 masks',
-      imageSrc: '/proofs/real_proof_1.png'
+      imageSrc: '/proofs/proof_benchmark_autonomous.png'
     },
     {
       id: 'proof-v4',
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tool: 'Custom Client Suite • CVAT',
       accuracy: '99.9% Boundary Fit',
       instances: '12,400 objects',
-      imageSrc: '/proofs/real_proof_1.png'
+      imageSrc: '/proofs/proof_benchmark_autonomous.png'
     },
     {
       id: 'proof-v5',
@@ -111,13 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'proof-img4',
       type: 'image',
       category: 'video',
-      title: 'Turbo Continuous Auto-Next Pipeline Execution',
-      description: 'High-speed automated pipeline execution showing rapid continuous verification, error handling, and key rotation across heavy video annotation workloads.',
-      date: 'Production Batch #101',
-      tool: 'EgoScale Turbo Runtime',
-      accuracy: '99.7% Benchmark',
-      instances: 'Automated Stream',
-      imageSrc: '/proofs/real_proof_1.png'
+      title: 'Aerial Drone Temporal Video Object Tracking (VOS)',
+      description: 'Persistent track ID retention with 0.00px drift across 500+ frames. Motion vector mapping and temporal consistency.',
+      date: 'Drone AI Benchmark',
+      tool: 'CVAT VOS • Meta SAM 2',
+      accuracy: '99.91% Tracking SLA',
+      instances: '24,000 frames',
+      imageSrc: '/proofs/proof_benchmark_drone.png'
     },
     {
       id: 'proof-img5',
@@ -602,5 +602,36 @@ document.addEventListener('DOMContentLoaded', () => {
       if (adVideoWrapper) adVideoWrapper.classList.remove('playing');
     });
   }
+
+
+  // =========================================================================
+  // 9. KINETIC MAGNETIC CURSOR & 3D PERSPECTIVE TILT ENGINE
+  // =========================================================================
+  const magneticEls = document.querySelectorAll('.btn-whatsapp-hero, .nav-whatsapp-pill, .ad-play-orb-btn, .btn-primary');
+  magneticEls.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.03)`;
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+    });
+  });
+
+  // 3D Perspective Tilt on Cards
+  const tiltCards = document.querySelectorAll('.proof-card, .cap-card, .metric-card');
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(1000px) rotateX(${-y * 7}deg) rotateY(${x * 7}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
 
 });
